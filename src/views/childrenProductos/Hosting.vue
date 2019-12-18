@@ -62,7 +62,9 @@
               </button>
               <small v-if="alertLogin" class="text-danger"
                 ><em
-                  ><u> El boton de compra se activará cuando inicie sesión *</u></em
+                  ><u>
+                    El boton de compra se activará cuando inicie sesión *</u
+                  ></em
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
@@ -94,7 +96,9 @@
               </button>
               <small v-if="alertLogin" class="text-danger"
                 ><em
-                  ><u> El boton de compra se activará cuando inicie sesión *</u></em
+                  ><u>
+                    El boton de compra se activará cuando inicie sesión *</u
+                  ></em
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
@@ -126,7 +130,9 @@
               </button>
               <small v-if="alertLogin" class="text-danger"
                 ><em
-                  ><u> El boton de compra se activará cuando inicie sesión *</u></em
+                  ><u>
+                    El boton de compra se activará cuando inicie sesión *</u
+                  ></em
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
@@ -144,12 +150,12 @@
       </div>
       <div class="container">
         <h1 class="text-center mt-5">Afinado para un rendimiento óptimo</h1>
-      <h6 class="text-center">
-        La nueva funcionalidad brinda la máxima potencia para todos.
-      </h6>
-      <hr
-        style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
-      />
+        <h6 class="text-center">
+          La nueva funcionalidad brinda la máxima potencia para todos.
+        </h6>
+        <hr
+          style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
+        />
       </div>
       <div class="row mt-5">
         <div class="col-xl">
@@ -209,11 +215,11 @@
       <div class="row my-5">
         <div class="col-xl-6 py-5">
           <h2>Soporte dedicado</h2>
-          <p>Todos los clientes de servidores dedicados
-            tienen acceso a nuestro equipo de élite de
-            especialistas dedicados en soporte de servidores.
-            Esta línea de soporte exclusiva está disponible
-            para usted 24/7.</p>
+          <p>
+            Todos los clientes de servidores dedicados tienen acceso a nuestro
+            equipo de élite de especialistas dedicados en soporte de servidores.
+            Esta línea de soporte exclusiva está disponible para usted 24/7.
+          </p>
         </div>
       </div>
     </div>

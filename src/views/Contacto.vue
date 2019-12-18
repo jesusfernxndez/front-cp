@@ -9,7 +9,7 @@
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
       <div class="row mx-2">
-        <div class="col-xl">
+        <div class="col-sm-8 container">
           <div class="alert alert-success" role="alert">
             Mediante este formulario te puedes poner en contácto con nosotros y
             expresarnos tu libre opinión. Recuerda que tus opiniones nos ayudan

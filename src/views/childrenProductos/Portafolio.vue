@@ -9,8 +9,8 @@
           <div class="row my-5 text-white">
             <div class="col-sm w-100">
               <h3>
-                Confíe la actualización o la creación de próximo
-                sitio Web profesional y moderno en nosotros.
+                Confíe la actualización o la creación de próximo sitio Web
+                profesional y moderno en nosotros.
               </h3>
             </div>
           </div>

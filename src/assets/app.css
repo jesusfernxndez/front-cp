@@ -28,8 +28,8 @@
     padding: 0px;
   }
   #paddingAncho {
-    padding-left: 5% !important;
-    padding-right: 5% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
   h1 {
     font-size: 2rem !important
@@ -60,5 +60,11 @@
   }
   .paddingTop {
     padding-top: 60px;
+  }
+}
+@media only screen and (min-width: 2000px) {
+  #paddingAncho {
+    padding-left: 20%;
+    padding-right: 20%;
   }
 }
