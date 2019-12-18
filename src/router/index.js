@@ -48,6 +48,11 @@ const routes = [
     path: "/admin",
     name: "administrador",
     component: Administrador
+  },
+  {
+    path: "*",
+    name: "not-found",
+    component: Home
   }
 ];
 

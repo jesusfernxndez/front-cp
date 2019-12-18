@@ -14,21 +14,20 @@
               </h3>
             </div>
           </div>
-          <div class="row mt-5">
-            <div class="col-sm px-1 mt-5">
+          <div class="row">
+            <div class="col-sm px-1">
               <a
                 href="#one"
-                type="button"
-                class="mt-5 btn btn-lg btn-primary px-5 berPlan"
+                class="btn btn-warning btn-block btn-lg berPlan mb-3"
               >
                 Ver Planes
-                <i class="action-undo"></i>
+                <i class="fas fa-angle-double-down"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 pb-5">
-          <div class="w-100">
+        <div class="col-sm-6 p-2">
+          <div>
             <img src="@/assets/portada2.png" class="d-block w-100" alt="..." />
           </div>
         </div>
@@ -63,7 +62,7 @@
               </button>
               <small v-if="alertLogin" class="text-danger"
                 ><em
-                  ><u> El boton se activará cuando inicie sesión *</u></em
+                  ><u> El boton de compra se activará cuando inicie sesión *</u></em
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
@@ -82,7 +81,7 @@
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Mejorado</h1>
-              <h4>S/150.00 / mes *</h4>
+              <h4>S/250.00 / mes *</h4>
               <button
                 class="btn btn-block mt-4"
                 :class="{
@@ -95,7 +94,7 @@
               </button>
               <small v-if="alertLogin" class="text-danger"
                 ><em
-                  ><u> El boton se activará cuando inicie sesión *</u></em
+                  ><u> El boton de compra se activará cuando inicie sesión *</u></em
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
@@ -114,7 +113,7 @@
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Premium</h1>
-              <h4>S/150.00 / mes *</h4>
+              <h4>S/400.00 / año *</h4>
               <button
                 class="btn btn-block mt-4"
                 :class="{
@@ -127,7 +126,7 @@
               </button>
               <small v-if="alertLogin" class="text-danger"
                 ><em
-                  ><u> El boton se activará cuando inicie sesión *</u></em
+                  ><u> El boton de compra se activará cuando inicie sesión *</u></em
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
@@ -197,8 +196,7 @@
               <p class="text-justify">
                 Si no está satisfecho por algún motivo dentro de los primeros 30
                 días de servicio, puede cancelar para obtener un reembolso
-                completo de las tarifas de alojamiento; Se aplican
-                restricciones.
+                completo de su dinero.
               </p>
             </div>
           </div>

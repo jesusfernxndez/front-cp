@@ -2,26 +2,33 @@
   <div>
     <div id="paddingAncho" class="cont paddingTop">
       <div class="row animated fadeInLeft pt-5">
-        <div class="col-sm-6">
-          <h1 class="display-5 text-white font-weight-bold">
-            Todos nuestros sitios web son 100% Responsivos
+        <div class="col-sm-6 p-3">
+          <h1 class="display-4 text-white font-weight-bold">
+            Desarrollo Web
           </h1>
-          <div class="row mt-5">
-            <div class="col-sm px-1 mt-5">
+          <div class="row my-5 text-white">
+            <div class="col-sm w-100">
+              <h3>
+                Confíe la actualización o la creación de próximo
+                sitio Web profesional y moderno en nosotros.
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm px-1">
               <a
                 href="#one"
-                type="button"
-                class="mt-5 btn btn-lg btn-primary px-5 berPlan"
+                class="btn btn-warning btn-block btn-lg berPlan mb-3"
               >
                 Ver Portafolio
-                <i class="action-undo"></i>
+                <i class="fas fa-angle-double-down"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 pb-5">
+        <div class="col-sm-6 p-2">
           <div>
-            <img src="@/assets/portada2.png" class="d-block w-100" alt="..." />
+            <img src="@/assets/portada3.png" class="d-block w-100" alt="..." />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="xd">
     <div class="paddingTop sectionTop" id="paddingAncho">
-      <div class="row animated fadeInLeft">
+      <div class="row animated fadeInUp">
         <div class="col-sm-6 p-3">
           <h1 class="display-4 text-white font-weight-bold mt-5">
             Todo lo que buscas en un solo Lugar
