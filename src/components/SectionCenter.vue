@@ -1,40 +1,40 @@
 <template>
   <div id="paddingAncho" class="py-2 sectionCenter">
-      <div class="container-fluid py-5">
-        <div class="row">
-          <div class="col-sm">
-            <h1 class="text-center" style="color: white;">
-              Estás a un solo paso de simplificar tu negocio
-            </h1>
-            <hr
-              style="width: 20%; border-color: white; border-top-width: 2px !important"
-            />
-          </div>
+    <div class="container-fluid py-5">
+      <div class="row">
+        <div class="col-sm">
+          <h1 class="text-center" style="color: white;">
+            Estás a un solo paso de simplificar tu negocio
+          </h1>
+          <hr
+            style="width: 20%; border-color: white; border-top-width: 2px !important"
+          />
         </div>
-        <div class="row mt-4">
-          <div class="col-sm text-right">
-            <button
-              type="button"
-              class="btn btn-light btn-lg px-5"
-              data-toggle="modal"
-              data-target="#ModalCenterIngresar"
-            >
-              Crear Cuenta
-            </button>
-          </div>
-          <div class="col-sm text-left">
-            <button
-              type="button"
-              class="btn btn-outline-light btn-lg px-5"
-              data-toggle="modal"
-              data-target="#ModalCenterIngresar"
-            >
-              Iniciar Sesión ►
-            </button>
-          </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm text-right">
+          <button
+            type="button"
+            class="btn btn-light btn-lg px-5"
+            data-toggle="modal"
+            data-target="#ModalCenterIngresar"
+          >
+            Crear Cuenta
+          </button>
+        </div>
+        <div class="col-sm text-left">
+          <button
+            type="button"
+            class="btn btn-outline-light btn-lg px-5"
+            data-toggle="modal"
+            data-target="#ModalCenterIngresar"
+          >
+            Iniciar Sesión ►
+          </button>
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped>

@@ -25,8 +25,8 @@
                 </h5>
                 <p class="card-text">
                   Más que un servicio de hosting, somos un aliado valioso para
-              nuestros clientes. Estamos presentes las 24 horas al día para
-              solucionar cualquier duda o problema de forma inmediata.
+                  nuestros clientes. Estamos presentes las 24 horas al día para
+                  solucionar cualquier duda o problema de forma inmediata.
                 </p>
                 <a href="#" class="btn btn-primary btn-block">Ver más ...</a>
               </div>
@@ -46,9 +46,9 @@
                   Portafolio de Sitios Web
                 </h5>
                 <p class="card-text">
-                  Usted tiene control total sobre cómo se ve y funciona su sitio.
-              Cada enlace, imagen, bloque, característica y módulo se puede
-              personalizar, modificar y reorganizar.
+                  Usted tiene control total sobre cómo se ve y funciona su
+                  sitio. Cada enlace, imagen, bloque, característica y módulo se
+                  puede personalizar, modificar y reorganizar.
                 </p>
                 <a href="#" class="btn btn-primary btn-block">Ver más ...</a>
               </div>
@@ -69,8 +69,8 @@
                 </h5>
                 <p class="card-text">
                   Diseño de sitio web 100% responsivos y adaptables a cualquier
-              tamaño de pantalla o dispositivo móvil. Utilizando animaciones e
-              interfaces modernas y de alta calidad.
+                  tamaño de pantalla o dispositivo móvil. Utilizando animaciones
+                  e interfaces modernas y de alta calidad.
                 </p>
                 <a href="#" class="btn btn-primary btn-block">Ver más ...</a>
               </div>
@@ -136,5 +136,4 @@ export default {
 #subtitle {
   color: #46a2d0;
 }
-
 </style>

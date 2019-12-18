@@ -4,7 +4,9 @@
       <div class="row mt-5 bg-white" id="paddingAncho">
         <div class="col-sm mt-5">
           <ul class="list-unstyled">
-            <h5><strong><u>Acceso Rápido</u></strong></h5>
+            <h5>
+              <strong><u>Acceso Rápido</u></strong>
+            </h5>
             <li>
               <router-link to="/" class="text-dark">Inicio</router-link>
             </li>
@@ -32,26 +34,43 @@
           <div class="row mt-5">
             <h6 class="w-100">Siguenos en nuestras Redes</h6>
             <div class="col-sm mt-2">
-              <a href="https://www.facebook.com" class="text-primary" target="blank">
+              <a
+                href="https://www.facebook.com"
+                class="text-primary"
+                target="blank"
+              >
                 <i class="fab fa-facebook-square fa-2x"></i>
               </a>
             </div>
             <div class="col-sm mt-2">
-              <a href="https://www.youtube.com" class="text-danger" target="blank">
-                <i class="fab fa-youtube fa-2x"></i>  
+              <a
+                href="https://www.youtube.com"
+                class="text-danger"
+                target="blank"
+              >
+                <i class="fab fa-youtube fa-2x"></i>
               </a>
             </div>
             <div class="col-sm mt-2">
-              <a href="https://www.instagram.com" class="text-warning" target="blank">
-                <i class="fab fa-instagram fa-2x"></i> 
-              </a>   
+              <a
+                href="https://www.instagram.com"
+                class="text-warning"
+                target="blank"
+              >
+                <i class="fab fa-instagram fa-2x"></i>
+              </a>
             </div>
           </div>
         </div>
         <div class="col-sm mt-5">
           <div class="row">
             <div class="col-sm text-center">
-              <img src="@/assets/mapa2-1.png" class="w-100 mapa" alt="" srcset="" />
+              <img
+                src="@/assets/mapa2-1.png"
+                class="w-100 mapa"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="col-sm text-center">
               <strong class="h5">Una sola Solución,</strong>
@@ -84,10 +103,10 @@ export default {};
 .footer {
   position: absolute !important;
   width: 100%;
-  background-color: #46C8BB
+  background-color: #46c8bb;
 }
 @media only screen and (max-width: 1200px) {
-  .list-unstyled{
+  .list-unstyled {
     text-align: center !important;
   }
 }
@@ -98,7 +117,7 @@ export default {};
 }
 @media only screen and (max-width: 585px) {
   .mapa {
-    width: 90px !important
+    width: 90px !important;
   }
 }
 </style>

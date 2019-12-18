@@ -36,119 +36,119 @@
     <div id="paddingAncho" class="mt-5">
       <div class="container">
         <h1 class="text-center mt-5" id="one">Escoje uno de nuestros Planes</h1>
-      <h6 class="text-center">
-        Puede escojer el plan que mas se adapte a sus necesidades
-      </h6>
-      <hr
-        style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
-      />
+        <h6 class="text-center">
+          Puede escojer el plan que mas se adapte a sus necesidades
+        </h6>
+        <hr
+          style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
+        />
         <div class="alert alert-danger" role="alert" v-if="alertLogin">
-        Usted debe iniciar Sesión para poder realizar compras en esta Web
-      </div>
-      <div class="row">
-        <div class="col-sm mt-2 px-4">
-          <div class="card mx-auto">
-            <div class="card-body text-center">
-              <h1 class="card-title font-weight-bold">Estándar</h1>
-              <h4>S/150.00 / mes *</h4>
-              <button
-                class="btn btn-block mt-4"
-                :class="{
-                  'btn-danger': alertLogin,
-                  'btn-primary': !alertLogin
-                }"
-                :disabled="alertLogin"
-              >
-                Adquirir
-              </button>
-              <small v-if="alertLogin" class="text-danger"
-                ><em
-                  ><u>
-                    El boton de compra se activará cuando inicie sesión *</u
-                  ></em
-                ></small
-              >
-              <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item">4 núcleos a 2.3 GHz</li>
-                <li class="list-group-item">
-                  500GB de almacenamiento (reflejado)
-                </li>
-                <li class="list-group-item">4 GB de RAM</li>
-                <li class="list-group-item">5 TB de ancho de banda</li>
-                <li class="list-group-item">3 direcciones IP</li>
-              </ul>
+          Usted debe iniciar Sesión para poder realizar compras en esta Web
+        </div>
+        <div class="row">
+          <div class="col-sm mt-2 px-4">
+            <div class="card mx-auto">
+              <div class="card-body text-center">
+                <h1 class="card-title font-weight-bold">Estándar</h1>
+                <h4>S/150.00 / mes *</h4>
+                <button
+                  class="btn btn-block mt-4"
+                  :class="{
+                    'btn-danger': alertLogin,
+                    'btn-primary': !alertLogin
+                  }"
+                  :disabled="alertLogin"
+                >
+                  Adquirir
+                </button>
+                <small v-if="alertLogin" class="text-danger"
+                  ><em
+                    ><u>
+                      El boton de compra se activará cuando inicie sesión *</u
+                    ></em
+                  ></small
+                >
+                <ul class="list-group list-group-flush mt-3">
+                  <li class="list-group-item">4 núcleos a 2.3 GHz</li>
+                  <li class="list-group-item">
+                    500GB de almacenamiento (reflejado)
+                  </li>
+                  <li class="list-group-item">4 GB de RAM</li>
+                  <li class="list-group-item">5 TB de ancho de banda</li>
+                  <li class="list-group-item">3 direcciones IP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm mt-2 px-4">
+            <div class="card mx-auto">
+              <div class="card-body text-center">
+                <h1 class="card-title font-weight-bold">Mejorado</h1>
+                <h4>S/250.00 / mes *</h4>
+                <button
+                  class="btn btn-block mt-4"
+                  :class="{
+                    'btn-danger': alertLogin,
+                    'btn-primary': !alertLogin
+                  }"
+                  :disabled="alertLogin"
+                >
+                  Adquirir
+                </button>
+                <small v-if="alertLogin" class="text-danger"
+                  ><em
+                    ><u>
+                      El boton de compra se activará cuando inicie sesión *</u
+                    ></em
+                  ></small
+                >
+                <ul class="list-group list-group-flush mt-3">
+                  <li class="list-group-item">4 núcleos a 2.5 GHz</li>
+                  <li class="list-group-item">
+                    1TB de almacenamiento (reflejado)
+                  </li>
+                  <li class="list-group-item">8 GB de RAM</li>
+                  <li class="list-group-item">10 TB de ancho de banda</li>
+                  <li class="list-group-item">4 direcciones IP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm mt-2 px-4">
+            <div class="card mx-auto">
+              <div class="card-body text-center">
+                <h1 class="card-title font-weight-bold">Premium</h1>
+                <h4>S/2500.00 / año *</h4>
+                <button
+                  class="btn btn-block mt-4"
+                  :class="{
+                    'btn-danger': alertLogin,
+                    'btn-primary': !alertLogin
+                  }"
+                  :disabled="alertLogin"
+                >
+                  Adquirir
+                </button>
+                <small v-if="alertLogin" class="text-danger"
+                  ><em
+                    ><u>
+                      El boton de compra se activará cuando inicie sesión *</u
+                    ></em
+                  ></small
+                >
+                <ul class="list-group list-group-flush mt-3">
+                  <li class="list-group-item">4 núcleos a 3.3 GHz</li>
+                  <li class="list-group-item">
+                    1TB de almacenamiento (reflejado)
+                  </li>
+                  <li class="list-group-item">16 GB de RAM</li>
+                  <li class="list-group-item">15 TB de ancho de banda</li>
+                  <li class="list-group-item">5 direcciones IP</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-sm mt-2 px-4">
-          <div class="card mx-auto">
-            <div class="card-body text-center">
-              <h1 class="card-title font-weight-bold">Mejorado</h1>
-              <h4>S/250.00 / mes *</h4>
-              <button
-                class="btn btn-block mt-4"
-                :class="{
-                  'btn-danger': alertLogin,
-                  'btn-primary': !alertLogin
-                }"
-                :disabled="alertLogin"
-              >
-                Adquirir
-              </button>
-              <small v-if="alertLogin" class="text-danger"
-                ><em
-                  ><u>
-                    El boton de compra se activará cuando inicie sesión *</u
-                  ></em
-                ></small
-              >
-              <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item">4 núcleos a 2.5 GHz</li>
-                <li class="list-group-item">
-                  1TB de almacenamiento (reflejado)
-                </li>
-                <li class="list-group-item">8 GB de RAM</li>
-                <li class="list-group-item">10 TB de ancho de banda</li>
-                <li class="list-group-item">4 direcciones IP</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm mt-2 px-4">
-          <div class="card mx-auto">
-            <div class="card-body text-center">
-              <h1 class="card-title font-weight-bold">Premium</h1>
-              <h4>S/2500.00 / año *</h4>
-              <button
-                class="btn btn-block mt-4"
-                :class="{
-                  'btn-danger': alertLogin,
-                  'btn-primary': !alertLogin
-                }"
-                :disabled="alertLogin"
-              >
-                Adquirir
-              </button>
-              <small v-if="alertLogin" class="text-danger"
-                ><em
-                  ><u>
-                    El boton de compra se activará cuando inicie sesión *</u
-                  ></em
-                ></small
-              >
-              <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item">4 núcleos a 3.3 GHz</li>
-                <li class="list-group-item">
-                  1TB de almacenamiento (reflejado)
-                </li>
-                <li class="list-group-item">16 GB de RAM</li>
-                <li class="list-group-item">15 TB de ancho de banda</li>
-                <li class="list-group-item">5 direcciones IP</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
       <div class="container">
         <h1 class="text-center mt-5">Afinado para un rendimiento óptimo</h1>

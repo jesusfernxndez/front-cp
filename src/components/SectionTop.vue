@@ -11,7 +11,12 @@
               <ul>
                 <li><h5>Hosting 100% Profesional.</h5></li>
                 <li><h5>Creación de sitios Web responsivos.</h5></li>
-                <li><h5>Contamos con Profesionales de alto nivel y reconocidos en la Industria.</h5></li>
+                <li>
+                  <h5>
+                    Contamos con Profesionales de alto nivel y reconocidos en la
+                    Industria.
+                  </h5>
+                </li>
               </ul>
             </div>
           </div>
