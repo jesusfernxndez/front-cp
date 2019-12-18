@@ -1,0 +1,54 @@
+@import "./animate.css";
+.paddingTop {
+  padding-top: 50px;
+}
+#app {
+  font-family: 'Ubuntu', sans-serif;
+}
+.navbar a.router-link-exact-active {
+  color: #46A2D0 !important;
+  font-weight: bold !important;
+}
+@media only screen and (max-width: 350px) {
+  .navbar-toggler {
+    width: 50px;
+    padding: 0px !important;
+  }
+  .navbar-toggler span {
+    width: 20px !important;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .navbar-toggler {
+    margin-left: -60%;
+  }
+  .navbar-brand {
+    margin: 0px;
+    width: 100% !important ;
+    padding: 0px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .navbar {
+    background-color: white !important;
+  }
+  #paddingAncho {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #paddingAncho {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  #paddingAncho {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  .paddingTop {
+    padding-top: 60px;
+  }
+}
