@@ -113,7 +113,7 @@
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Premium</h1>
-              <h4>S/400.00 / año *</h4>
+              <h4>S/3000.00 / año *</h4>
               <button
                 class="btn btn-block mt-4"
                 :class="{
