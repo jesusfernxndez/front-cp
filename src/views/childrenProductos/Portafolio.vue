@@ -2,7 +2,7 @@
   <div>
     <div id="paddingAncho" class="cont paddingTop">
       <div class="row animated fadeInLeft pt-5">
-        <div class="col-sm-6 p-3">
+        <div class="col-lg-6 p-3">
           <h1 class="display-4 text-white font-weight-bold">
             Desarrollo Web
           </h1>
@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm px-1">
+            <div class="col-lg px-1">
               <a
                 href="#one"
                 class="btn btn-warning btn-block btn-lg berPlan mb-3"
@@ -26,7 +26,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 p-2">
+        <div class="col-lg-6 p-2">
           <div>
             <img src="@/assets/portada3.png" class="d-block w-100" alt="..." />
           </div>
@@ -43,11 +43,14 @@
       <hr
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
+      <div class="container">
       <div class="alert alert-danger" role="alert" v-if="alertLogin">
         Usted debe iniciar Sesión para poder realizar compras en esta Web
       </div>
+
+      
       <div class="row">
-        <div class="col-xl mt-2 px-4">
+        <div class="col-lg mt-2 px-4">
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Estándar</h1>
@@ -79,7 +82,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl mt-2 px-4">
+        <div class="col-lg mt-2 px-4">
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Mejorado</h1>
@@ -111,7 +114,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl mt-2 px-4">
+        <div class="col-lg mt-2 px-4">
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Premium</h1>
@@ -196,9 +199,9 @@
           </form>
         </div>
       </div>
-      <h1 class="text-center mt-5">Afinado para un rendimiento óptimo</h1>
+      <h1 class="text-center mt-5">Algunas opciones de balance de dinero</h1>
       <h6 class="text-center">
-        La nueva funcionalidad brinda la máxima potencia para todos.
+        Contamos con profesionales de muy alto nivel para que usted tenga la mejor experiencia posible.
       </h6>
       <hr
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
@@ -258,6 +261,7 @@
         </div>
       </div>
       <div class="row mt-2"></div>
+      </div>
     </div>
   </div>
 </template>

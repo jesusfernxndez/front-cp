@@ -34,18 +34,19 @@
       </div>
     </div>
     <div id="paddingAncho" class="mt-5">
-      <h1 class="text-center mt-5" id="one">Escoje uno de nuestros Planes</h1>
+      <div class="container">
+        <h1 class="text-center mt-5" id="one">Escoje uno de nuestros Planes</h1>
       <h6 class="text-center">
         Puede escojer el plan que mas se adapte a sus necesidades
       </h6>
       <hr
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
-      <div class="alert alert-danger" role="alert" v-if="alertLogin">
+        <div class="alert alert-danger" role="alert" v-if="alertLogin">
         Usted debe iniciar Sesión para poder realizar compras en esta Web
       </div>
       <div class="row">
-        <div class="col-xl mt-2 px-4">
+        <div class="col-sm mt-2 px-4">
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Estándar</h1>
@@ -79,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl mt-2 px-4">
+        <div class="col-sm mt-2 px-4">
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Mejorado</h1>
@@ -113,7 +114,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl mt-2 px-4">
+        <div class="col-sm mt-2 px-4">
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Premium</h1>
@@ -147,6 +148,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div class="container">
         <h1 class="text-center mt-5">Afinado para un rendimiento óptimo</h1>
@@ -212,7 +214,7 @@
       </div>
     </div>
     <div id="paddingAncho" class="bg-customSupport">
-      <div class="row my-5">
+      <div class="row mt-5 py-2">
         <div class="col-xl-6 py-5">
           <h2>Soporte dedicado</h2>
           <p>

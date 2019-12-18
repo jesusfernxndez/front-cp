@@ -31,18 +31,18 @@
           negocios.
           <div class="row mt-5">
             <h6 class="w-100">Siguenos en nuestras Redes</h6>
-            <div class="col-sm mt-2 icon-social text-primary">
-              <a href="https://www.google.com">
+            <div class="col-sm mt-2">
+              <a href="https://www.facebook.com" class="text-primary" target="blank">
                 <i class="fab fa-facebook-square fa-2x"></i>
               </a>
             </div>
-            <div class="col-sm mt-2 icon-social text-danger">
-              <a href="https://www.google.com">
+            <div class="col-sm mt-2">
+              <a href="https://www.youtube.com" class="text-danger" target="blank">
                 <i class="fab fa-youtube fa-2x"></i>  
               </a>
             </div>
-            <div class="col-sm mt-2 icon-social text-warning">
-              <a href="https://www.google.com">
+            <div class="col-sm mt-2">
+              <a href="https://www.instagram.com" class="text-warning" target="blank">
                 <i class="fab fa-instagram fa-2x"></i> 
               </a>   
             </div>
