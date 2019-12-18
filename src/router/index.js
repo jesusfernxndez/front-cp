@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Nosotros from "../views/Nosotros.vue";
 import Contacto from "../views/Contacto.vue";
-import Productos from "../views/Productos.vue";
+import Tienda from "../views/Tienda.vue";
 import Administrador from "../views/Administrador.vue";
 // children Productos
 import Hosting from "../views/childrenProductos/Hosting.vue";
@@ -28,9 +28,9 @@ const routes = [
     component: Contacto
   },
   {
-    path: "/productos",
-    name: "productos",
-    component: Productos,
+    path: "/tienda",
+    name: "tienda",
+    component: Tienda,
     children: [
       {
         path: "hosting-dedicado",

@@ -44,7 +44,7 @@
             <div class="card mx-auto">
               <img src="../assets/02.jpg" class="card-img-top" alt="..." />
               <div class="card-body text-center">
-                <h5 class="card-title">Ganadores del Visa Everywhere</h5>
+                <h5 class="card-title">Visa Everywhere</h5>
                 <hr />
                 <p class="card-text">
                   “Felicitamos a CODERS PERú y estamos ansiosos de trabajar con
@@ -64,7 +64,7 @@
                 <p class="card-text">
                   “SUP nos ayudó a seguir a flote mientras conseguíamos nuevos
                   clientes; sin ellos, no hubiéramos podido continuar
-                  creciendo”. CULQI
+                  creciendo”.
                   <br /><br /><strong><em>CODERS PERú</em></strong>
                 </p>
               </div>

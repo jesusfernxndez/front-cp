@@ -66,7 +66,7 @@
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item">4 núcleos a 2.3 GHz></li>
+                <li class="list-group-item">4 núcleos a 2.3 GHz</li>
                 <li class="list-group-item">
                   500GB de almacenamiento (reflejado)
                 </li>
@@ -98,7 +98,7 @@
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item">4 núcleos a 2.5 GHz></li>
+                <li class="list-group-item">4 núcleos a 2.5 GHz</li>
                 <li class="list-group-item">
                   1TB de almacenamiento (reflejado)
                 </li>
@@ -113,7 +113,7 @@
           <div class="card mx-auto">
             <div class="card-body text-center">
               <h1 class="card-title font-weight-bold">Premium</h1>
-              <h4>S/3000.00 / año *</h4>
+              <h4>S/2500.00 / año *</h4>
               <button
                 class="btn btn-block mt-4"
                 :class="{
@@ -130,7 +130,7 @@
                 ></small
               >
               <ul class="list-group list-group-flush mt-3">
-                <li class="list-group-item">4 núcleos a 3.3 GHz></li>
+                <li class="list-group-item">4 núcleos a 3.3 GHz</li>
                 <li class="list-group-item">
                   1TB de almacenamiento (reflejado)
                 </li>
@@ -142,13 +142,15 @@
           </div>
         </div>
       </div>
-      <h1 class="text-center mt-5">Afinado para un rendimiento óptimo</h1>
+      <div class="container">
+        <h1 class="text-center mt-5">Afinado para un rendimiento óptimo</h1>
       <h6 class="text-center">
         La nueva funcionalidad brinda la máxima potencia para todos.
       </h6>
       <hr
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
+      </div>
       <div class="row mt-5">
         <div class="col-xl">
           <div class="row">
@@ -202,7 +204,18 @@
           </div>
         </div>
       </div>
-      <div class="row mt-2"></div>
+    </div>
+    <div id="paddingAncho" class="bg-customSupport">
+      <div class="row my-5">
+        <div class="col-xl-6 py-5">
+          <h2>Soporte dedicado</h2>
+          <p>Todos los clientes de servidores dedicados
+            tienen acceso a nuestro equipo de élite de
+            especialistas dedicados en soporte de servidores.
+            Esta línea de soporte exclusiva está disponible
+            para usted 24/7.</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -219,6 +232,9 @@ export default {
 };
 </script>
 <style scoped>
+.bg-customSupport {
+  background-color: #86868662;
+}
 .berPlan {
   border-radius: 30px;
   font-weight: bold;

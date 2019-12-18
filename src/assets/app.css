@@ -27,6 +27,16 @@
     width: 100% !important ;
     padding: 0px;
   }
+  #paddingAncho {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+  h1 {
+    font-size: 2rem !important
+  }
+  h2 {
+    font-size: 1rem !important;
+  }
 }
 @media only screen and (max-width: 991px) {
   .navbar {
@@ -43,7 +53,7 @@
     padding-right: 10%;
   }
 }
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 1500px) {
   #paddingAncho {
     padding-left: 15%;
     padding-right: 15%;

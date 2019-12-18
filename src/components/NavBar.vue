@@ -41,13 +41,13 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Productos
+            Tienda
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <router-link class="dropdown-item" to="/productos/hosting-dedicado"
+            <router-link class="dropdown-item" to="/tienda/hosting-dedicado"
               >Hosting Dedicado</router-link
             >
-            <router-link class="dropdown-item" to="/productos/portafolio"
+            <router-link class="dropdown-item" to="/tienda/portafolio"
               >Portafolio Web</router-link
             >
           </div>
