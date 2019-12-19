@@ -68,9 +68,7 @@
             User
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <router-link class="dropdown-item" to="/productos/hosting-dedicado"
-              >Perfil</router-link
-            >
+            <router-link class="dropdown-item" to="/perfil">Perfil</router-link>
             <button class="dropdown-item" @click="logout">Salir</button>
           </div>
         </li>
@@ -110,7 +108,12 @@ export default {
     },
     colorNav() {
       const path = this.$route.path;
-      if (path === "/nosotros" || path === "/contacto" || path === "/blog") {
+      if (
+        path === "/nosotros" ||
+        path === "/contacto" ||
+        path === "/blog" ||
+        path === "/perfil"
+      ) {
         return true;
       }
       return false;

@@ -13,7 +13,8 @@
           role="alert"
           v-if="!mostrarCajacomentar"
         >
-          Para poder Publicar algo en este blog necesitas iniciar sesión.
+          Este apartado no está habilitado para: Administrador y Personas sin
+          cuenta.
         </div>
         <div class="row">
           <div class="col-lg">
@@ -42,21 +43,21 @@
               >
               <a
                 class="list-group-item list-group-item-action"
-                id="list-messages-list"
-                data-toggle="list"
-                href="#list-messages"
-                role="tab"
-                aria-controls="messages"
-                ><h5>Capactiaciones</h5></a
-              >
-              <a
-                class="list-group-item list-group-item-action"
                 id="list-settings-list"
                 data-toggle="list"
                 href="#list-settings"
                 role="tab"
                 aria-controls="settings"
                 ><h5>Tutoriales</h5></a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+                ><h5>Eventos</h5></a
               >
             </div>
           </div>
@@ -75,7 +76,9 @@
                   <form>
                     <div class="form-group">
                       <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">Comentar</button>
+                      <button class="btn btn-primary mt-2">
+                        Publicar Comentario
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -95,16 +98,18 @@
                 aria-labelledby="list-profile-list"
               >
                 <div class="container-fluid" v-if="mostrarCajacomentar">
-                  <h5>Publica una noticia:</h5>
+                  <h5>Puedes compartir una noticia:</h5>
                   <form>
                     <div class="form-group">
                       <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">Comentar</button>
+                      <button class="btn btn-primary mt-2">
+                        Compartir Noticia
+                      </button>
                     </div>
                   </form>
                 </div>
                 <div class="container-fluid">
-                  <h3>Comentarios:</h3>
+                  <h3>Noticias:</h3>
                   <div class="container">
                     <div class="bg-info">
                       Aquí el comentario
@@ -118,20 +123,11 @@
                 role="tabpanel"
                 aria-labelledby="list-messages-list"
               >
-                <div class="container-fluid" v-if="mostrarCajacomentar">
-                  <h5>Próximas Capactiaciones</h5>
-                  <form>
-                    <div class="form-group">
-                      <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">Comentar</button>
-                    </div>
-                  </form>
-                </div>
                 <div class="container-fluid">
-                  <h3>Comentarios:</h3>
+                  <h3>Los Administradores Publicaron estos eventos:</h3>
                   <div class="container">
                     <div class="bg-info">
-                      Aquí el comentario
+                      Aquí las Capactiaciones
                     </div>
                   </div>
                 </div>
@@ -143,16 +139,18 @@
                 aria-labelledby="list-settings-list"
               >
                 <div class="container-fluid" v-if="mostrarCajacomentar">
-                  <h5>Puedes compartir un Tutorial</h5>
+                  <h5>Puedes compartir un Tutorial:</h5>
                   <form>
                     <div class="form-group">
                       <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">Comentar</button>
+                      <button class="btn btn-primary mt-2">
+                        Compartir tutorial
+                      </button>
                     </div>
                   </form>
                 </div>
                 <div class="container-fluid">
-                  <h3>Comentarios:</h3>
+                  <h3>Tutoriales:</h3>
                   <div class="container">
                     <div class="bg-info">
                       Aquí el comentario
@@ -171,10 +169,7 @@
 export default {
   computed: {
     mostrarCajacomentar() {
-      if (
-        localStorage.getItem("tokenUser") ||
-        localStorage.getItem("tokenAdmin")
-      ) {
+      if (localStorage.getItem("tokenUser")) {
         return true;
       }
       return false;

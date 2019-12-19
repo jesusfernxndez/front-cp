@@ -5,6 +5,7 @@ import Nosotros from "../views/Nosotros.vue";
 import Blog from "../views/Blog.vue";
 import Contacto from "../views/Contacto.vue";
 import Tienda from "../views/Tienda.vue";
+import Perfil from "../views/Perfil.vue";
 import Administrador from "../views/Administrador.vue";
 // children Productos
 import Hosting from "../views/childrenProductos/Hosting.vue";
@@ -49,6 +50,11 @@ const routes = [
         component: Portafolio
       }
     ]
+  },
+  {
+    path: "/perfil",
+    name: "perfil",
+    component: Perfil
   },
   {
     path: "/admin",
