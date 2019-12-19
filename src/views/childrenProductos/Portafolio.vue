@@ -275,7 +275,7 @@
         <div class="row mt-2"></div>
       </div>
     </div>
-    <sectionCenter />
+    <sectionCenter v-if="mostrarButtonNoLogin"/>
   </div>
 </template>
 <script>
@@ -285,6 +285,15 @@ export default {
     sectionCenter
   },
   computed: {
+    mostrarButtonNoLogin() {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
+        return false;
+      }
+      return true;
+    },
     alertLogin() {
       if (localStorage.getItem("tokenUser")) {
         return false;
