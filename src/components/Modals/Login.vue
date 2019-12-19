@@ -59,7 +59,7 @@
             </button>
             <button
               type="button"
-              class="btn btn-primary btn-block"
+              class="btn btn-secondary btn-block"
               data-dismiss="modal"
               data-toggle="modal"
               data-target="#ModalCenterRegister"

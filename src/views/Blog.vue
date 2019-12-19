@@ -8,6 +8,13 @@
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
       <div class="container mt-5">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          v-if="!mostrarCajacomentar"
+        >
+          Para poder Publicar algo en este blog necesitas iniciar sesión.
+        </div>
         <div class="row">
           <div class="col-lg">
             <div
@@ -63,7 +70,7 @@
                 role="tabpanel"
                 aria-labelledby="list-home-list"
               >
-                <div class="container-fluid">
+                <div class="container-fluid" v-if="mostrarCajacomentar">
                   <h5>Escribe un comentario:</h5>
                   <form>
                     <div class="form-group">
@@ -87,7 +94,7 @@
                 role="tabpanel"
                 aria-labelledby="list-profile-list"
               >
-                <div class="container-fluid">
+                <div class="container-fluid" v-if="mostrarCajacomentar">
                   <h5>Publica una noticia:</h5>
                   <form>
                     <div class="form-group">
@@ -111,7 +118,7 @@
                 role="tabpanel"
                 aria-labelledby="list-messages-list"
               >
-                <div class="container-fluid">
+                <div class="container-fluid" v-if="mostrarCajacomentar">
                   <h5>Próximas Capactiaciones</h5>
                   <form>
                     <div class="form-group">
@@ -135,7 +142,7 @@
                 role="tabpanel"
                 aria-labelledby="list-settings-list"
               >
-                <div class="container-fluid">
+                <div class="container-fluid" v-if="mostrarCajacomentar">
                   <h5>Puedes compartir un Tutorial</h5>
                   <form>
                     <div class="form-group">
@@ -160,3 +167,18 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    mostrarCajacomentar() {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
+        return true;
+      }
+      return false;
+    }
+  }
+};
+</script>

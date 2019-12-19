@@ -100,7 +100,10 @@ export default {
       return true;
     },
     isLogged() {
-      if (localStorage.getItem("tokenUser") || localStorage.getItem("tokenAdmin")) {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
         return true;
       }
       return false;
