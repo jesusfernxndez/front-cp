@@ -17,7 +17,7 @@
             type="button"
             class="btn btn-light btn-lg px-5"
             data-toggle="modal"
-            data-target="#ModalCenterIngresar"
+            data-target="#ModalCenterRegister"
           >
             Crear Cuenta
           </button>

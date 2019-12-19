@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <sectionCenter />
+    <sectionCenter v-if="mostrarButtonNoLogin"/>
   </div>
 </template>
 
@@ -110,6 +110,17 @@ import SectionTop from "@/components/SectionTop.vue";
 import SectionCenter from "@/components/SectionCenter.vue";
 export default {
   name: "home",
+  computed: {
+    mostrarButtonNoLogin() {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
+        return false;
+      }
+      return true;
+    }
+  },
   components: {
     SectionTop,
     SectionCenter

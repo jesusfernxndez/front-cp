@@ -123,7 +123,7 @@ export default {
   methods: {
     logout() {
       localStorage.clear();
-      this.$router.go(this.$router.currentRoute);
+      this.$router.go(this.$router.push("/"));
     }
   }
 };

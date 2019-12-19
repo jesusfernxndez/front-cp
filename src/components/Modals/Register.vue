@@ -7,7 +7,7 @@
     aria-labelledby="ModalCenterRegister"
     aria-hidden="true"
   >
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">
@@ -210,9 +210,6 @@ export default {
             "danger"
           );
         } else {
-          localStorage.setItem("tokenUser", res.data.token);
-          this.$router.go(this.$router.currentRoute);
-          window.$("#ModalCenterRegister").modal("hide");
           this.toast(
             "b-toaster-bottom-right",
             true,
@@ -220,6 +217,9 @@ export default {
             res.data.message,
             "success"
           );
+          localStorage.setItem("tokenUser", res.data.token);
+          window.$("#ModalCenterRegister").modal("hide");
+          setTimeout(() => this.$router.go(this.$router.push("/")), 1000);
         }
       });
     }
