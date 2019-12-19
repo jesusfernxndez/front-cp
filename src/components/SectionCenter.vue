@@ -1,5 +1,5 @@
 <template>
-  <div id="paddingAncho" class="py-2 sectionCenter">
+  <div id="paddingAncho" class="py-2 sectionCenter" v-if="mostrarButtonNoLogin">
     <div class="container-fluid py-5">
       <div class="row">
         <div class="col-sm">
@@ -36,6 +36,20 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  mostrarButtonNoLogin() {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
+        return false;
+      }
+      return true;
+    }
+}
+</script>
 
 <style scoped>
 .btn {
