@@ -45,7 +45,8 @@
       />
       <div class="container">
         <div class="alert alert-danger" role="alert" v-if="alertLogin">
-          Usted debe iniciar Sesión para poder realizar compras en esta Web
+          Las compras en esta web no están habilidatas para: Administrador y
+          Personas sin cuenta.
         </div>
 
         <div class="row">
@@ -66,7 +67,10 @@
                 </button>
                 <small v-if="alertLogin" class="text-danger"
                   ><em
-                    ><u> El boton se activará cuando inicie sesión *</u></em
+                    ><u
+                      >El boton se activará cuando inicie sesión como cliente
+                      normal *</u
+                    ></em
                   ></small
                 >
                 <ul class="list-group list-group-flush mt-3">
@@ -98,7 +102,10 @@
                 </button>
                 <small v-if="alertLogin" class="text-danger"
                   ><em
-                    ><u> El boton se activará cuando inicie sesión *</u></em
+                    ><u
+                      >El boton se activará cuando inicie sesión como cliente
+                      normal *</u
+                    ></em
                   ></small
                 >
                 <ul class="list-group list-group-flush mt-3">
@@ -130,7 +137,10 @@
                 </button>
                 <small v-if="alertLogin" class="text-danger"
                   ><em
-                    ><u> El boton se activará cuando inicie sesión *</u></em
+                    ><u
+                      >El boton se activará cuando inicie sesión como cliente
+                      normal *</u
+                    ></em
                   ></small
                 >
                 <ul class="list-group list-group-flush mt-3">
@@ -202,8 +212,8 @@
         </div>
         <h1 class="text-center mt-5">Algunas opciones de balance de dinero</h1>
         <h6 class="text-center">
-          Contamos con profesionales de muy alto nivel para que usted tenga la
-          mejor experiencia posible.
+          Para darle una orientación, puede seleccionar entre las siguientes
+          opciones y verá un aproximado de costo.
         </h6>
         <hr
           style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
@@ -265,13 +275,18 @@
         <div class="row mt-2"></div>
       </div>
     </div>
+    <sectionCenter />
   </div>
 </template>
 <script>
+import sectionCenter from "@/components/SectionCenter.vue";
 export default {
+  components: {
+    sectionCenter
+  },
   computed: {
     alertLogin() {
-      if (localStorage.getItem("token")) {
+      if (localStorage.getItem("tokenUser")) {
         return false;
       }
       return true;

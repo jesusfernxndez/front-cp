@@ -43,14 +43,15 @@
           style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
         />
         <div class="alert alert-danger" role="alert" v-if="alertLogin">
-          Usted debe iniciar Sesión para poder realizar compras en esta Web
+          Las compras en esta web no están habilidatas para: Administrador y
+          Personas sin cuenta.
         </div>
         <div class="row">
           <div class="col-sm mt-2 px-4">
             <div class="card mx-auto">
               <div class="card-body text-center">
                 <h1 class="card-title font-weight-bold">Estándar</h1>
-                <h4>S/150.00 / mes *</h4>
+                <h4>S/150.00 / mes</h4>
                 <button
                   class="btn btn-block mt-4"
                   :class="{
@@ -64,7 +65,8 @@
                 <small v-if="alertLogin" class="text-danger"
                   ><em
                     ><u>
-                      El boton de compra se activará cuando inicie sesión *</u
+                      El boton se activará cuando inicie sesión como cliente
+                      normal *</u
                     ></em
                   ></small
                 >
@@ -84,7 +86,7 @@
             <div class="card mx-auto">
               <div class="card-body text-center">
                 <h1 class="card-title font-weight-bold">Mejorado</h1>
-                <h4>S/250.00 / mes *</h4>
+                <h4>S/250.00 / mes</h4>
                 <button
                   class="btn btn-block mt-4"
                   :class="{
@@ -98,7 +100,8 @@
                 <small v-if="alertLogin" class="text-danger"
                   ><em
                     ><u>
-                      El boton de compra se activará cuando inicie sesión *</u
+                      El boton se activará cuando inicie sesión como cliente
+                      normal *</u
                     ></em
                   ></small
                 >
@@ -118,7 +121,7 @@
             <div class="card mx-auto">
               <div class="card-body text-center">
                 <h1 class="card-title font-weight-bold">Premium</h1>
-                <h4>S/2500.00 / año *</h4>
+                <h4>S/2500.00 / año</h4>
                 <button
                   class="btn btn-block mt-4"
                   :class="{
@@ -132,7 +135,8 @@
                 <small v-if="alertLogin" class="text-danger"
                   ><em
                     ><u>
-                      El boton de compra se activará cuando inicie sesión *</u
+                      El boton se activará cuando inicie sesión como cliente
+                      normal *</u
                     ></em
                   ></small
                 >
@@ -231,7 +235,7 @@
 export default {
   computed: {
     alertLogin() {
-      if (localStorage.getItem("token")) {
+      if (localStorage.getItem("tokenUser")) {
         return false;
       }
       return true;

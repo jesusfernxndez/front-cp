@@ -78,7 +78,7 @@
                 <hr />
                 <p class="card-text">
                   “Wayra nos impulsó y nos dio el respaldo para ingresar en esta
-                  industria tan compleja como es la industria de pagos”.
+                  industria tan compleja como es la de creación de sitios web”.
                   <br /><br /><strong><em>CODERS PERú</em></strong>
                 </p>
               </div>

@@ -29,6 +29,9 @@
           <router-link class="nav-link" to="/nosotros">Nosotros</router-link>
         </li>
         <li class="nav-item">
+          <router-link class="nav-link" to="/blog">Blog</router-link>
+        </li>
+        <li class="nav-item">
           <router-link class="nav-link" to="/contacto">Contácto</router-link>
         </li>
         <li class="nav-item dropdown">
@@ -65,12 +68,10 @@
             User
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <router-link class="dropdown-item" to="/productos/hosting"
+            <router-link class="dropdown-item" to="/productos/hosting-dedicado"
               >Perfil</router-link
             >
-            <router-link class="dropdown-item" to="/productos/portafolio"
-              >Salir</router-link
-            >
+            <button class="dropdown-item" @click="logout">Salir</button>
           </div>
         </li>
         <li class="nav-item">
@@ -99,14 +100,14 @@ export default {
       return true;
     },
     isLogged() {
-      if (!localStorage.getItem("token")) {
-        return false;
+      if (localStorage.getItem("tokenUser") || localStorage.getItem("tokenAdmin")) {
+        return true;
       }
-      return true;
+      return false;
     },
     colorNav() {
       const path = this.$route.path;
-      if (path === "/nosotros" || path === "/contacto") {
+      if (path === "/nosotros" || path === "/contacto" || path === "/blog") {
         return true;
       }
       return false;
@@ -117,6 +118,12 @@ export default {
         return true;
       }
       return false;
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.go(this.$router.currentRoute);
     }
   }
 };

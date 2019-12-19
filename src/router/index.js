@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Nosotros from "../views/Nosotros.vue";
+import Blog from "../views/Blog.vue";
 import Contacto from "../views/Contacto.vue";
 import Tienda from "../views/Tienda.vue";
 import Administrador from "../views/Administrador.vue";
@@ -21,6 +22,11 @@ const routes = [
     path: "/nosotros",
     name: "nosotros",
     component: Nosotros
+  },
+  {
+    path: "/blog",
+    name: "blog",
+    component: Blog
   },
   {
     path: "/contacto",
@@ -63,17 +69,16 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const loggedIn = localStorage.getItem("token");
+  const loggedAdmin = localStorage.getItem("tokenAdmin");
 
-  if (to.path === "/admin" && !loggedIn) {
-    localStorage.clear();
+  if (to.path === "/admin" && !loggedAdmin) {
+    localStorage.removeItem("tokenAdmin");
     return next("/");
   }
-  if (to.path != "/admin" && !loggedIn) {
-    localStorage.clear();
+  if (to.path != "/admin" && !loggedAdmin) {
+    localStorage.removeItem("tokenAdmin");
     return next();
   }
-
   return next();
 });
 

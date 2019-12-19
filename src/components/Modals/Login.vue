@@ -59,7 +59,7 @@
             </button>
             <button
               type="button"
-              class="btn btn-secondary btn-block"
+              class="btn btn-primary btn-block"
               data-dismiss="modal"
               data-toggle="modal"
               data-target="#ModalCenterRegister"
@@ -69,9 +69,15 @@
           </form>
         </div>
         <div class="modal-footer">
-          <router-link to="/admin" class="link mx-auto" data-dismiss="modal"
-            >soy el administrador</router-link
+          <a
+            type="button"
+            class="link mx-auto"
+            data-dismiss="modal"
+            data-toggle="modal"
+            data-target="#ModalCenterIngresarAdmin"
           >
+            <u>Soy el administrador</u>
+          </a>
         </div>
       </div>
     </div>
@@ -102,9 +108,9 @@ export default {
       e.preventDefault();
       this.axios.post("/signin", this.form).then(res => {
         if (res.data.token) {
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("tokenUser", res.data.token);
           window.$("#ModalCenterIngresar").modal("hide");
-          this.$router.push("/admin");
+          this.$router.go(this.$router.currentRoute);
         } else {
           this.toast(
             "b-toaster-bottom-right",

@@ -29,7 +29,7 @@
             data-toggle="modal"
             data-target="#ModalCenterIngresar"
           >
-            Iniciar Sesión ►
+            Iniciar Sesión
           </button>
         </div>
       </div>
@@ -38,6 +38,18 @@
 </template>
 
 <style scoped>
+.btn {
+  border-radius: 30px;
+  font-weight: bold;
+}
+.btn.btn-light,
+.btn.btn-outline-light:hover {
+  color: #46e6aa;
+}
+.btn.btn-outline-light {
+  font-weight: bold;
+  color: white;
+}
 .sectionCenter {
   background: #46e5ab; /* fallback for old browsers */
   background: -webkit-linear-gradient(

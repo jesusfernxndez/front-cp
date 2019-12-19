@@ -65,7 +65,7 @@
                 <h5
                   class="card-title border-bottom border-secondary font-weight-bold pb-2"
                 >
-                  Nos Adaptamos a tus requerimientos
+                  Nos Adaptamos a ti
                 </h5>
                 <p class="card-text">
                   Diseño de sitio web 100% responsivos y adaptables a cualquier

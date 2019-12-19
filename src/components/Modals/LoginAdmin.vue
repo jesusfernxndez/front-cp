@@ -1,10 +1,10 @@
 <template>
   <div
     class="modal fade"
-    id="ModalCenterIngresar"
-    tabindex="-1"
+    id="ModalCenterIngresarAdmin"
+    tabindex="-2"
     role="dialog"
-    aria-labelledby="ModalCenterIngresar"
+    aria-labelledby="ModalCenterIngresarAdmin"
     aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -53,25 +53,11 @@
             <button
               type="submit"
               class="btn btn-outline-primary btn-block"
-              @click="locUserLogin"
+              @click="loginAdmin"
             >
               INICIAR SESIÓN
             </button>
-            <button
-              type="button"
-              class="btn btn-secondary btn-block"
-              data-dismiss="modal"
-              data-toggle="modal"
-              data-target="#ModalCenterRegister"
-            >
-              REGISTRARSE
-            </button>
           </form>
-        </div>
-        <div class="modal-footer">
-          <router-link to="/admin" class="link mx-auto" data-dismiss="modal"
-            >soy el administrador</router-link
-          >
         </div>
       </div>
     </div>
@@ -98,12 +84,12 @@ export default {
         appendToast: append
       });
     },
-    locUserLogin(e) {
+    loginAdmin(e) {
       e.preventDefault();
-      this.axios.post("/signin", this.form).then(res => {
+      this.axios.post("/signin/admin", this.form).then(res => {
         if (res.data.token) {
-          localStorage.setItem("token", res.data.token);
-          window.$("#ModalCenterIngresar").modal("hide");
+          localStorage.setItem("tokenAdmin", res.data.token);
+          window.$("#ModalCenterIngresarAdmin").modal("hide");
           this.$router.push("/admin");
         } else {
           this.toast(

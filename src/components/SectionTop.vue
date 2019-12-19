@@ -23,7 +23,7 @@
           <div class="row">
             <div class="col-sm px-1">
               <button
-                v-if="mostrarButton"
+                v-if="mostrarButtonNoLogin"
                 type="button"
                 class="btn btn-lg btn-light btn-block"
                 data-toggle="modal"
@@ -33,15 +33,21 @@
               </button>
               <router-link
                 to="/admin"
-                v-if="!mostrarButton"
+                v-if="mostrarButtonDashboard"
                 class="btn btn-lg btn-outline-light btn-block"
                 >Ir al Dashboard</router-link
+              >
+              <router-link
+                to="/nosotros"
+                v-if="mostrarButtonProfile"
+                class="btn btn-lg btn-outline-light btn-block"
+                >Ir al Perfil</router-link
               >
             </div>
             <div class="col-sm px-1">
               <button
                 type="button"
-                v-if="mostrarButton"
+                v-if="mostrarButtonNoLogin"
                 class="btn btn-lg btn-outline-light btn-block"
                 data-toggle="modal"
                 data-target="#ModalCenterIngresar"
@@ -82,8 +88,23 @@
 <script>
 export default {
   computed: {
-    mostrarButton() {
-      if (localStorage.getItem("token")) {
+    mostrarButtonDashboard() {
+      if (!localStorage.getItem("tokenAdmin")) {
+        return false;
+      }
+      return true;
+    },
+    mostrarButtonProfile() {
+      if (!localStorage.getItem("tokenUser")) {
+        return false;
+      }
+      return true;
+    },
+    mostrarButtonNoLogin() {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
         return false;
       }
       return true;

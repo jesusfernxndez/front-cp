@@ -1,86 +1,157 @@
 <template>
-  <div class="paddingTop animated fadeInUp">
+  <div class="paddingTop animated fadeInLeft">
     <div id="paddingAncho">
-      <h1 class="mt-5 text-center font-weight-bold">Nuestra historia</h1>
+      <h1 class="mt-5 text-center font-weight-bold">
+        Bienvenido al Blog
+      </h1>
       <hr
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
-      <h4 class="text-center">Una StartUp peruana que nació hace 5 años...</h4>
       <div class="container mt-5">
-        <p class="text-justify">
-          CODERS PERú fue fundada en Noviembre del año 2013 por dos
-          administradores de la Universidad del Pacífico (Lima, Perú). CODERS
-          PERú nace como una organización que busca simplificar la forma de
-          empoderar tecnológicamente a empresas, brindándole acceso a
-          herramientas que le permitan impactar de manera positiva los
-          resultados de su negocio. Ha sido reconocida por poderosas
-          instituciones del ecosistema emprendedor, consiguiendo capital
-          semilla, servicios de incubación y aceleración. MIT Technology Review,
-          Universidad del Pacífico, Wayra Perú (Telefónica), Start-Up Perú y
-          NXTP Labs son algunas de las organizaciones que los han impulsado a
-          crear lo que hoy es CODERS PERú. Al día de hoy, CODERS PERú es una
-          Start-Up que crece anualmente 500%, son Partners tecnológicos de VISA
-          y tienen como inversionista al Grupo Credicorp.
-        </p>
-      </div>
-      <div class="container p-5">
-        <img
-          src="../assets/seniority-programadores.jpg"
-          alt=""
-          srcset=""
-          class="w-100 rounded shadow"
-        />
-      </div>
-      <h1 class="mt-5 text-center font-weight-bold">Nuestros logros</h1>
-      <hr
-        style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
-      />
-      <h4 class="text-center">
-        Los premios y reconocimientos obtenidos en el camino del emprendimiento
-      </h4>
-      <div class="container">
         <div class="row">
-          <div class="col-xl mt-5">
-            <div class="card mx-auto">
-              <img src="../assets/02.jpg" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h5 class="card-title">Ganadores del Visa Everywhere</h5>
-                <hr />
-                <p class="card-text">
-                  “Felicitamos a CODERS PERú y estamos ansiosos de trabajar con
-                  ellos para ayudarlos a comercializar su solución y hacer
-                  diferencias para la región”.
-                  <br /><br /><strong><em>VISA.</em></strong>
-                </p>
-              </div>
+          <div class="col-lg">
+            <div
+              class="list-group list-group-horizontal-xl text-center"
+              id="list-tab"
+              role="tablist"
+            >
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-home-list"
+                data-toggle="list"
+                href="#list-home"
+                role="tab"
+                aria-controls="home"
+                ><h5>Comentarios</h5></a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-profile-list"
+                data-toggle="list"
+                href="#list-profile"
+                role="tab"
+                aria-controls="profile"
+                ><h5>Noticias</h5></a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+                ><h5>Capactiaciones</h5></a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-settings-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="settings"
+                ><h5>Tutoriales</h5></a
+              >
             </div>
           </div>
-          <div class="col-xl mt-5">
-            <div class="card mx-auto">
-              <img src="../assets/01.jpg" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h5 class="card-title">Ganadores Startup Perú</h5>
-                <hr />
-                <p class="card-text">
-                  “SUP nos ayudó a seguir a flote mientras conseguíamos nuevos
-                  clientes; sin ellos, no hubiéramos podido continuar
-                  creciendo”. CULQI
-                  <br /><br /><strong><em>CODERS PERú</em></strong>
-                </p>
+        </div>
+        <div class="row mt-2">
+          <div class="col-lg">
+            <div class="tab-content p-3" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="list-home"
+                role="tabpanel"
+                aria-labelledby="list-home-list"
+              >
+                <div class="container-fluid">
+                  <h5>Escribe un comentario:</h5>
+                  <form>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="5"></textarea>
+                      <button class="btn btn-primary mt-2">Comentar</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="container-fluid">
+                  <h3>Comentarios:</h3>
+                  <div class="container">
+                    <div class="bg-info">
+                      Aquí el comentario
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-xl mt-5">
-            <div class="card mx-auto">
-              <img src="../assets/03.jpg" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h5 class="card-title">Iniciativa Wayra</h5>
-                <hr />
-                <p class="card-text">
-                  “Wayra nos impulsó y nos dio el respaldo para ingresar en esta
-                  industria tan compleja como es la industria de pagos”.
-                  <br /><br /><strong><em>CODERS PERú</em></strong>
-                </p>
+              <div
+                class="tab-pane fade"
+                id="list-profile"
+                role="tabpanel"
+                aria-labelledby="list-profile-list"
+              >
+                <div class="container-fluid">
+                  <h5>Publica una noticia:</h5>
+                  <form>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="5"></textarea>
+                      <button class="btn btn-primary mt-2">Comentar</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="container-fluid">
+                  <h3>Comentarios:</h3>
+                  <div class="container">
+                    <div class="bg-info">
+                      Aquí el comentario
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-messages"
+                role="tabpanel"
+                aria-labelledby="list-messages-list"
+              >
+                <div class="container-fluid">
+                  <h5>Próximas Capactiaciones</h5>
+                  <form>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="5"></textarea>
+                      <button class="btn btn-primary mt-2">Comentar</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="container-fluid">
+                  <h3>Comentarios:</h3>
+                  <div class="container">
+                    <div class="bg-info">
+                      Aquí el comentario
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-settings"
+                role="tabpanel"
+                aria-labelledby="list-settings-list"
+              >
+                <div class="container-fluid">
+                  <h5>Puedes compartir un Tutorial</h5>
+                  <form>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="5"></textarea>
+                      <button class="btn btn-primary mt-2">Comentar</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="container-fluid">
+                  <h3>Comentarios:</h3>
+                  <div class="container">
+                    <div class="bg-info">
+                      Aquí el comentario
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
