@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <sectionCenter />
+    <sectionCenter v-if="mostrarButtonNoLogin"/>
   </div>
 </template>
 
