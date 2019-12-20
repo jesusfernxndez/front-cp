@@ -17,7 +17,7 @@ import "@fortawesome/fontawesome-free/js/all.js";
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = "https://api-coders-peru.now.sh";
+axios.defaults.baseURL = "https://titulacion-rest-api.jesusfernxndez10.now.sh";
 
 new Vue({
   router,
