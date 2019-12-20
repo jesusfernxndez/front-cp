@@ -277,66 +277,27 @@ export default {
     },
     envComment(env) {
       env.preventDefault();
-      if (localStorage.getItem("tokenUser")) {
-        const datauser = JSON.parse(localStorage.getItem("dataUserProfile"));
-        this.newComentario.dni_emisor = datauser.dni;
-        this.newComentario.correo = datauser.correo;
-        this.newComentario.rango = "Usuario";
-        let newfecha = new Date();
-        newfecha =
-          newfecha.getFullYear() +
-          "-" +
-          (newfecha.getMonth() + 1) +
-          "-" +
-          newfecha.getDate();
-        this.newComentario.fecha = newfecha;
-
-        this.axios({
-          method: "post", //you can set what request you want to be
-          url: "/newComentario",
-          data: this.newComentario,
-          headers: {
-            authorization: localStorage.getItem("tokenUser"),
-            dni: datauser.dni
-          }
-        }).then(res => {
-          if (res.data.message) {
-            this.toast(
-              "b-toaster-bottom-right",
-              true,
-              "Felicidades",
-              res.data.message,
-              "success"
-            );
-            this.newComentario.comentario = "";
-            this.showComents();
-          }
-        });
-      } else if (localStorage.getItem("tokenAdmin")) {
-        const datauser = JSON.parse(localStorage.getItem("dataUserAdmin"));
-        this.newComentario.dni_emisor = datauser.dni;
-        this.newComentario.correo = datauser.correo;
-        this.newComentario.rango = "Administrador";
-        let newfecha = new Date();
-        newfecha =
-          newfecha.getFullYear() +
-          "-" +
-          (newfecha.getMonth() + 1) +
-          "-" +
-          newfecha.getDate();
-        this.newComentario.fecha = newfecha;
-        this.axios({
-          method: "post", //you can set what request you want to be
-          url: "/newComentario",
-          data: this.newComentario,
-          headers: {
-            authorization: localStorage.getItem("tokenAdmin"),
-            dni: datauser.dni
-          }
-        }).then(res => {
-          console.log(res);
-        });
-      }
+      this.axios({
+        method: "post",
+        url: "/newComentario",
+        data: this.newNoticia,
+        headers: {
+          authorization: this.headerAuthorization,
+          dni: this.newComentario.dni_emisor
+        }
+      }).then(res => {
+        if (res.data.message) {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Felicidades",
+            res.data.message,
+            "success"
+          );
+          this.newComentario.comentario = "";
+          this.getNoticias();
+        }
+      });
     }
   },
   computed: {
@@ -360,21 +321,28 @@ export default {
       (newfecha.getMonth() + 1) +
       "-" +
       newfecha.getDate();
+    this.newComentario.fecha = newfecha;
     this.newNoticia.fecha = newfecha;
     if (localStorage.getItem("tokenUser")) {
       this.headerAuthorization = localStorage.getItem("tokenUser");
       const userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
+      this.newComentario.dni_emisor = userdata.dni;
+      this.newComentario.correo = userdata.correo;
+      this.newComentario.rango = "Usuario";
       this.newNoticia.dni_emisor = userdata.dni;
       this.newNoticia.correo = userdata.correo;
       this.newNoticia.rango = "Usuario";
     } else if (localStorage.getItem("tokenAdmin")) {
       this.headerAuthorization = localStorage.getItem("tokenAdmin");
       const userdata = JSON.parse(localStorage.getItem("dataUserAdmin"));
+      this.newComentario.dni_emisor = userdata.dni;
+      this.newComentario.correo = userdata.correo;
+      this.newComentario.rango = "Administrador";
       this.newNoticia.dni_emisor = userdata.dni;
       this.newNoticia.correo = userdata.correo;
       this.newNoticia.rango = "Administrador";
     } else {
-      console.log("no token");
+      return false
     }
   }
 };
