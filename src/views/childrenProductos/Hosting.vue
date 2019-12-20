@@ -263,9 +263,13 @@ export default {
           }
         });
       } else {
-        console.log(
-          "el administrador y las personas sin cuenta no pueden comprar en este sitio web."
-        );
+        this.toast(
+              "b-toaster-bottom-right",
+              true,
+              "Felicidades",
+              "el administrador y las personas sin cuenta no pueden comprar en este sitio web.",
+              "success"
+            );
       }
     }
   },

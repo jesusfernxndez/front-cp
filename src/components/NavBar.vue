@@ -129,7 +129,7 @@ export default {
   methods: {
     logout() {
       localStorage.clear();
-      this.$router.go(this.$router.push("/"));
+      this.$router.push("/");
     }
   }
 };

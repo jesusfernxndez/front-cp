@@ -332,7 +332,7 @@ export default {
   },
   created() {
     if (!this.mostrarPerfil) {
-      this.$router.go(this.$router.push("/"));
+      this.$router.push("/");
     } else {
       if (localStorage.getItem("tokenUser")) {
         const datauser = JSON.parse(localStorage.getItem("dataUserProfile"));
