@@ -38,9 +38,9 @@
                 >Ir al Dashboard</router-link
               >
               <router-link
-                to="/nosotros"
+                to="/perfil"
                 v-if="mostrarButtonProfile"
-                class="btn btn-lg btn-outline-light btn-block"
+                class="btn btn-lg btn-light btn-block"
                 >Ir al Perfil</router-link
               >
             </div>

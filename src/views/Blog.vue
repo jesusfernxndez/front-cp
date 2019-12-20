@@ -8,13 +8,8 @@
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
       <div class="container mt-5">
-        <div
-          class="alert alert-danger"
-          role="alert"
-          v-if="!mostrarCajacomentar"
-        >
-          Este apartado no está habilitado para: Administrador y Personas sin
-          cuenta.
+        <div class="alert alert-danger" role="alert" v-if="!mostrarsolocajaOne">
+          Este apartado no está habilitado para Personas sin cuenta.
         </div>
         <div class="row">
           <div class="col-lg">
@@ -71,12 +66,16 @@
                 role="tabpanel"
                 aria-labelledby="list-home-list"
               >
-                <div class="container-fluid" v-if="mostrarCajacomentar">
+                <div class="container-fluid" v-if="mostrarsolocajaOne">
                   <h5>Escribe un comentario:</h5>
                   <form>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">
+                      <textarea
+                        class="form-control"
+                        rows="5"
+                        v-model="newComentario.comentario"
+                      ></textarea>
+                      <button class="btn btn-primary mt-2" @click="envComment">
                         Publicar Comentario
                       </button>
                     </div>
@@ -84,9 +83,27 @@
                 </div>
                 <div class="container-fluid">
                   <h3>Comentarios:</h3>
-                  <div class="container">
-                    <div class="bg-info">
-                      Aquí el comentario
+                  <div class="container-fluid border rounded">
+                    <div
+                      v-for="comentario in showComentarios"
+                      :key="comentario.id"
+                    >
+                      <div
+                        class="border rounded border-success mt-2 p-2 animated rubberBand"
+                      >
+                        <p class="text-primary"><u>Enviado por: </u></p>
+                        <h6>{{ comentario.correo }}</h6>
+                        <p class="text-primary"><u>Rango :</u></p>
+                        <h6>{{ comentario.rango }}</h6>
+                        <p class="text-primary"><u>Comentario :</u></p>
+                        <div class="container border-warning">
+                          <p class="border border-warning rounded p-2">
+                            {{ comentario.comentario }}
+                          </p>
+                        </div>
+                        <p>Fecha: {{ comentario.fecha }}</p>
+                      </div>
+                      <hr />
                     </div>
                   </div>
                 </div>
@@ -97,12 +114,16 @@
                 role="tabpanel"
                 aria-labelledby="list-profile-list"
               >
-                <div class="container-fluid" v-if="mostrarCajacomentar">
+                <div class="container-fluid" v-if="mostrarsolocajaOne">
                   <h5>Puedes compartir una noticia:</h5>
                   <form>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">
+                      <textarea
+                        class="form-control"
+                        rows="5"
+                        v-model="newNoticia.noticia"
+                      ></textarea>
+                      <button class="btn btn-primary mt-2" @click="envNoticia">
                         Compartir Noticia
                       </button>
                     </div>
@@ -110,9 +131,24 @@
                 </div>
                 <div class="container-fluid">
                   <h3>Noticias:</h3>
-                  <div class="container">
-                    <div class="bg-info">
-                      Aquí el comentario
+                  <div class="container-fluid border rounded">
+                    <div v-for="noticia in showNoticias" :key="noticia.id">
+                      <div
+                        class="border rounded border-success mt-2 p-2 animated rubberBand"
+                      >
+                        <p class="text-primary"><u>Enviado por: </u></p>
+                        <h6>{{ noticia.correo }}</h6>
+                        <p class="text-primary"><u>Rango :</u></p>
+                        <h6>{{ noticia.rango }}</h6>
+                        <p class="text-primary"><u>Noticia :</u></p>
+                        <div class="container border-warning">
+                          <p class="border border-warning rounded p-2">
+                            {{ noticia.noticia }}
+                          </p>
+                        </div>
+                        <p>Fecha: {{ noticia.fecha }}</p>
+                      </div>
+                      <hr />
                     </div>
                   </div>
                 </div>
@@ -138,7 +174,7 @@
                 role="tabpanel"
                 aria-labelledby="list-settings-list"
               >
-                <div class="container-fluid" v-if="mostrarCajacomentar">
+                <div class="container-fluid" v-if="mostrarsolocajaOne">
                   <h5>Puedes compartir un Tutorial:</h5>
                   <form>
                     <div class="form-group">
@@ -167,12 +203,178 @@
 </template>
 <script>
 export default {
-  computed: {
-    mostrarCajacomentar() {
+  data() {
+    return {
+      headerAuthorization: "",
+      showComentarios: Array,
+      showNoticias: Array,
+      newNoticia: {
+        dni_emisor: null,
+        correo: "",
+        rango: "",
+        noticia: "",
+        fecha: new Date()
+      },
+      newComentario: {
+        dni_emisor: null,
+        correo: "",
+        rango: "",
+        comentario: "",
+        fecha: new Date()
+      }
+    };
+  },
+  methods: {
+    toast(toaster, append = false, title, message, variant) {
+      this.counter += 1;
+      this.$bvToast.toast(message, {
+        title,
+        toaster,
+        solid: true,
+        variant,
+        appendToast: append
+      });
+    },
+    showComents() {
+      this.axios({
+        method: "get", //you can set what request you want to be
+        url: "/showComentarios"
+      }).then(res => {
+        this.showComentarios = res.data;
+      });
+    },
+    getNoticias() {
+      this.axios({
+        method: "get", //you can set what request you want to be
+        url: "/showNoticias"
+      }).then(res => {
+        this.showNoticias = res.data;
+      });
+    },
+    envNoticia(env) {
+      env.preventDefault();
+      this.axios({
+        method: "post",
+        url: "/newNoticia",
+        data: this.newNoticia,
+        headers: {
+          authorization: this.headerAuthorization,
+          dni: this.newNoticia.dni_emisor
+        }
+      }).then(res => {
+        if (res.data.message) {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Felicidades",
+            res.data.message,
+            "success"
+          );
+          this.newNoticia.noticia = "";
+          this.getNoticias();
+        }
+      });
+    },
+    envComment(env) {
+      env.preventDefault();
       if (localStorage.getItem("tokenUser")) {
+        const datauser = JSON.parse(localStorage.getItem("dataUserProfile"));
+        this.newComentario.dni_emisor = datauser.dni;
+        this.newComentario.correo = datauser.correo;
+        this.newComentario.rango = "Usuario";
+        let newfecha = new Date();
+        newfecha =
+          newfecha.getFullYear() +
+          "-" +
+          (newfecha.getMonth() + 1) +
+          "-" +
+          newfecha.getDate();
+        this.newComentario.fecha = newfecha;
+
+        this.axios({
+          method: "post", //you can set what request you want to be
+          url: "/newComentario",
+          data: this.newComentario,
+          headers: {
+            authorization: localStorage.getItem("tokenUser"),
+            dni: datauser.dni
+          }
+        }).then(res => {
+          if (res.data.message) {
+            this.toast(
+              "b-toaster-bottom-right",
+              true,
+              "Felicidades",
+              res.data.message,
+              "success"
+            );
+            this.newComentario.comentario = "";
+            this.showComents();
+          }
+        });
+      } else if (localStorage.getItem("tokenAdmin")) {
+        const datauser = JSON.parse(localStorage.getItem("dataUserAdmin"));
+        this.newComentario.dni_emisor = datauser.dni;
+        this.newComentario.correo = datauser.correo;
+        this.newComentario.rango = "Administrador";
+        let newfecha = new Date();
+        newfecha =
+          newfecha.getFullYear() +
+          "-" +
+          (newfecha.getMonth() + 1) +
+          "-" +
+          newfecha.getDate();
+        this.newComentario.fecha = newfecha;
+        this.axios({
+          method: "post", //you can set what request you want to be
+          url: "/newComentario",
+          data: this.newComentario,
+          headers: {
+            authorization: localStorage.getItem("tokenAdmin"),
+            dni: datauser.dni
+          }
+        }).then(res => {
+          console.log(res);
+        });
+      }
+    }
+  },
+  computed: {
+    mostrarsolocajaOne() {
+      if (
+        localStorage.getItem("tokenUser") ||
+        localStorage.getItem("tokenAdmin")
+      ) {
         return true;
       }
       return false;
+    }
+  },
+  created() {
+    this.showComents();
+    this.getNoticias();
+    let newfecha = new Date();
+    newfecha =
+      newfecha.getFullYear() +
+      "-" +
+      (newfecha.getMonth() + 1) +
+      "-" +
+      newfecha.getDate();
+    this.newNoticia.fecha = newfecha;
+    if (localStorage.getItem("tokenUser")) {
+      this.headerAuthorization = localStorage.getItem("tokenUser");
+      const userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
+      this.newNoticia.dni_emisor = userdata.dni;
+      this.newNoticia.correo = userdata.correo;
+      this.newNoticia.rango = "Usuario";
+    } else if (localStorage.getItem("tokenAdmin")) {
+      this.headerAuthorization = localStorage.getItem("tokenAdmin");
+      const userdata = JSON.parse(localStorage.getItem("dataUserAdmin"));
+      this.newNoticia.dni_emisor = userdata.dni;
+      this.newNoticia.correo = userdata.correo;
+      this.newNoticia.rango = "Administrador";
+    } else {
+      console.log("no token");
     }
   }
 };

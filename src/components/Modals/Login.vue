@@ -28,7 +28,6 @@
               <label for="inputUsername">Username:</label>
               <input
                 type="text"
-                id="inputUsername"
                 class="form-control"
                 v-model="form.username"
                 required
@@ -41,7 +40,6 @@
               <label for="inputPassword">Password:</label>
               <input
                 type="password"
-                id="inputPassword"
                 class="form-control"
                 v-model="form.password"
                 required
@@ -109,6 +107,10 @@ export default {
       this.axios.post("/signin", this.form).then(res => {
         if (res.data.token) {
           localStorage.setItem("tokenUser", res.data.token);
+          localStorage.setItem(
+            "dataUserProfile",
+            JSON.stringify(res.data.dataUser)
+          );
           window.$("#ModalCenterIngresar").modal("hide");
           this.$router.go(this.$router.currentRoute);
         } else {

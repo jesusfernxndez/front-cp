@@ -25,10 +25,9 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="inputUsername">Username:</label>
+              <label>Username:</label>
               <input
                 type="text"
-                id="inputUsername"
                 class="form-control"
                 v-model="form.username"
                 required
@@ -38,15 +37,14 @@
               </small>
             </div>
             <div class="form-group">
-              <label for="inputPassword">Password:</label>
+              <label>Password:</label>
               <input
                 type="password"
-                id="inputPassword"
                 class="form-control"
                 v-model="form.password"
                 required
               />
-              <small id="emailHelp" class="form-text text-muted">
+              <small class="form-text text-muted">
                 * Este campo es obligatorio ...
               </small>
             </div>
@@ -89,6 +87,10 @@ export default {
       this.axios.post("/signin/admin", this.form).then(res => {
         if (res.data.token) {
           localStorage.setItem("tokenAdmin", res.data.token);
+          localStorage.setItem(
+            "dataUserProfileAdmin",
+            JSON.stringify(res.data.dataUser)
+          );
           window.$("#ModalCenterIngresarAdmin").modal("hide");
           this.$router.push("/admin");
         } else {
