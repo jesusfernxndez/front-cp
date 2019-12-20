@@ -219,7 +219,7 @@ export default {
           );
           localStorage.setItem("tokenUser", res.data.token);
           window.$("#ModalCenterRegister").modal("hide");
-          setTimeout(() => this.$router.go(this.$router.currentRoute), 1000);
+          this.$router.push("/perfil")
         }
       });
     }
