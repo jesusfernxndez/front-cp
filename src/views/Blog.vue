@@ -342,7 +342,7 @@ export default {
       this.newNoticia.correo = userdata.correo;
       this.newNoticia.rango = "Administrador";
     } else {
-      return false
+      return false;
     }
   }
 };
