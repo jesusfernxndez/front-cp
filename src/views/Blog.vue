@@ -332,7 +332,7 @@ export default {
       this.newNoticia.rango = "Usuario";
     } else if (localStorage.getItem("tokenAdmin")) {
       this.headerAuthorization = localStorage.getItem("tokenAdmin");
-      const userdata = JSON.parse(localStorage.getItem("dataUserAdmin"));
+      const userdata = JSON.parse(localStorage.getItem("dataUserProfileAdmin"));
       this.newComentario.dni_emisor = userdata.dni;
       this.newComentario.correo = userdata.correo;
       this.newComentario.rango = "Administrador";
