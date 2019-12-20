@@ -47,20 +47,27 @@
           Personas sin cuenta.
         </div>
         <div class="row">
-          <div class="col-sm mt-2 px-4">
+          <div
+            class="col-sm mt-2 px-4"
+            v-for="plan in planesHosting"
+            :key="plan.id"
+          >
             <div class="card mx-auto">
               <div class="card-body text-center">
-                <h1 class="card-title font-weight-bold">Estándar</h1>
-                <h4>S/150.00 / mes</h4>
+                <h1 class="card-title font-weight-bold text-uppercase mt-4">
+                  {{ plan.nombre }}
+                </h1>
+                <h3>S/{{ plan.precio }}.00</h3>
                 <button
-                  class="btn btn-block mt-4"
+                  class="btn btn-block my-5"
                   :class="{
                     'btn-danger': alertLogin,
                     'btn-primary': !alertLogin
                   }"
                   :disabled="alertLogin"
+                  @click="contratar(plan)"
                 >
-                  Adquirir
+                  Contratar
                 </button>
                 <small v-if="alertLogin" class="text-danger"
                   ><em
@@ -70,84 +77,23 @@
                     ></em
                   ></small
                 >
+                <h5>
+                  <u>{{ plan.descripcion }}</u>
+                </h5>
                 <ul class="list-group list-group-flush mt-3">
-                  <li class="list-group-item">4 núcleos a 2.3 GHz</li>
                   <li class="list-group-item">
-                    500GB de almacenamiento (reflejado)
+                    {{ plan.nucleos }} núcleos a 3.5 GHz
                   </li>
-                  <li class="list-group-item">4 GB de RAM</li>
-                  <li class="list-group-item">5 TB de ancho de banda</li>
-                  <li class="list-group-item">3 direcciones IP</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm mt-2 px-4">
-            <div class="card mx-auto">
-              <div class="card-body text-center">
-                <h1 class="card-title font-weight-bold">Mejorado</h1>
-                <h4>S/250.00 / mes</h4>
-                <button
-                  class="btn btn-block mt-4"
-                  :class="{
-                    'btn-danger': alertLogin,
-                    'btn-primary': !alertLogin
-                  }"
-                  :disabled="alertLogin"
-                >
-                  Adquirir
-                </button>
-                <small v-if="alertLogin" class="text-danger"
-                  ><em
-                    ><u>
-                      El boton se activará cuando inicie sesión como cliente
-                      normal *</u
-                    ></em
-                  ></small
-                >
-                <ul class="list-group list-group-flush mt-3">
-                  <li class="list-group-item">4 núcleos a 2.5 GHz</li>
                   <li class="list-group-item">
-                    1TB de almacenamiento (reflejado)
+                    {{ plan.almacenamient }}TB de almacenamiento (reflejado)
                   </li>
-                  <li class="list-group-item">8 GB de RAM</li>
-                  <li class="list-group-item">10 TB de ancho de banda</li>
-                  <li class="list-group-item">4 direcciones IP</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm mt-2 px-4">
-            <div class="card mx-auto">
-              <div class="card-body text-center">
-                <h1 class="card-title font-weight-bold">Premium</h1>
-                <h4>S/2500.00 / año</h4>
-                <button
-                  class="btn btn-block mt-4"
-                  :class="{
-                    'btn-danger': alertLogin,
-                    'btn-primary': !alertLogin
-                  }"
-                  :disabled="alertLogin"
-                >
-                  Adquirir
-                </button>
-                <small v-if="alertLogin" class="text-danger"
-                  ><em
-                    ><u>
-                      El boton se activará cuando inicie sesión como cliente
-                      normal *</u
-                    ></em
-                  ></small
-                >
-                <ul class="list-group list-group-flush mt-3">
-                  <li class="list-group-item">4 núcleos a 3.3 GHz</li>
+                  <li class="list-group-item">{{ plan.ram }} GB de RAM</li>
                   <li class="list-group-item">
-                    1TB de almacenamiento (reflejado)
+                    {{ plan.ancho_de_banda }} TB de ancho de banda
                   </li>
-                  <li class="list-group-item">16 GB de RAM</li>
-                  <li class="list-group-item">15 TB de ancho de banda</li>
-                  <li class="list-group-item">5 direcciones IP</li>
+                  <li class="list-group-item">
+                    {{ plan.direcciones_ip }} direcciones IP
+                  </li>
                 </ul>
               </div>
             </div>
@@ -233,6 +179,104 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      planesHosting: Array,
+      fecha_compra: new Date(),
+      fecha_vence: new Date()
+    };
+  },
+  methods: {
+    toast(toaster, append = false, title, message, variant) {
+      this.counter += 1;
+      this.$bvToast.toast(message, {
+        title,
+        toaster,
+        solid: true,
+        variant,
+        appendToast: append
+      });
+    },
+    contratar(plan) {
+      if (localStorage.getItem("tokenUser")) {
+        const userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
+        let fecha_actual = new Date();
+        fecha_actual =
+          fecha_actual.getFullYear() +
+          "-" +
+          (fecha_actual.getMonth() + 1) +
+          "-" +
+          fecha_actual.getDate();
+        this.fecha_compra = fecha_actual;
+        if (plan.id_plan === 1) {
+          let fecha_proxima = new Date();
+          fecha_proxima =
+            fecha_proxima.getFullYear() +
+            "-" +
+            (fecha_proxima.getMonth() + 2) +
+            "-" +
+            fecha_proxima.getDate();
+          this.fecha_vence = fecha_proxima;
+        } else if (plan.id_plan === 2) {
+          let fecha_proxima = new Date();
+          fecha_proxima =
+            fecha_proxima.getFullYear() +
+            "-" +
+            (fecha_proxima.getMonth() + 2) +
+            "-" +
+            fecha_proxima.getDate();
+          this.fecha_vence = fecha_proxima;
+        } else {
+          let fecha_proxima = new Date();
+          fecha_proxima =
+            fecha_proxima.getFullYear() +
+            1 +
+            "-" +
+            (fecha_proxima.getMonth() + 1) +
+            "-" +
+            fecha_proxima.getDate();
+          this.fecha_vence = fecha_proxima;
+        }
+        this.axios({
+          method: "post",
+          url: "/newCompraPlantHosting",
+          data: {
+            dni: userdata.dni,
+            id_plan: plan.id,
+            nombre_plan: plan.nombre,
+            fecha_compra: this.fecha_compra,
+            fecha_vencimiento: this.fecha_vence,
+            precio: plan.precio
+          },
+          headers: {
+            authorization: localStorage.getItem("tokenUser")
+          }
+        }).then(res => {
+          if (res.data.success) {
+            this.toast(
+              "b-toaster-bottom-right",
+              true,
+              "Felicidades",
+              res.data.message,
+              "success"
+            );
+          }
+        });
+      } else {
+        console.log(
+          "el administrador y las personas sin cuenta no pueden comprar en este sitio web."
+        );
+      }
+    }
+  },
+  created() {
+    this.axios({
+      method: "get",
+      url: "/showPlanesHosting"
+    }).then(res => {
+      this.planesHosting = res.data;
+    });
+  },
   computed: {
     alertLogin() {
       if (localStorage.getItem("tokenUser")) {

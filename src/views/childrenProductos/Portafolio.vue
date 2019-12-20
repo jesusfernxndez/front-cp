@@ -50,11 +50,15 @@
         </div>
 
         <div class="row">
-          <div class="col-lg mt-2 px-4">
+          <div
+            class="col-sm mt-2 px-4"
+            v-for="sitio in portafolio"
+            :key="sitio.id"
+          >
             <div class="card mx-auto">
               <div class="card-body text-center">
-                <h1 class="card-title font-weight-bold">Estándar</h1>
-                <h4>S/150.00 / mes *</h4>
+                <h1 class="card-title font-weight-bold">{{ sitio.nombre }}</h1>
+                <h4>S/{{ sitio.precio }}.00 *</h4>
                 <button
                   class="btn btn-block mt-4"
                   :class="{
@@ -62,8 +66,9 @@
                     'btn-primary': !alertLogin
                   }"
                   :disabled="alertLogin"
+                  @click="comprar(sitio)"
                 >
-                  Adquirir
+                  Comprar
                 </button>
                 <small v-if="alertLogin" class="text-danger"
                   ><em
@@ -73,85 +78,13 @@
                     ></em
                   ></small
                 >
-                <ul class="list-group list-group-flush mt-3">
-                  <li class="list-group-item">4 núcleos a 2.3 GHz></li>
-                  <li class="list-group-item">
-                    500GB de almacenamiento (reflejado)
-                  </li>
-                  <li class="list-group-item">4 GB de RAM</li>
-                  <li class="list-group-item">5 TB de ancho de banda</li>
-                  <li class="list-group-item">3 direcciones IP</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg mt-2 px-4">
-            <div class="card mx-auto">
-              <div class="card-body text-center">
-                <h1 class="card-title font-weight-bold">Mejorado</h1>
-                <h4>S/150.00 / mes *</h4>
-                <button
-                  class="btn btn-block mt-4"
-                  :class="{
-                    'btn-danger': alertLogin,
-                    'btn-primary': !alertLogin
-                  }"
-                  :disabled="alertLogin"
+                <p class="mt-5">{{ sitio.descripcion }}</p>
+                <a
+                  :href="sitio.link_demo"
+                  target="blank"
+                  class="btn btn-outline-warning btn-block"
+                  >Ver Demo</a
                 >
-                  Adquirir
-                </button>
-                <small v-if="alertLogin" class="text-danger"
-                  ><em
-                    ><u
-                      >El boton se activará cuando inicie sesión como cliente
-                      normal *</u
-                    ></em
-                  ></small
-                >
-                <ul class="list-group list-group-flush mt-3">
-                  <li class="list-group-item">4 núcleos a 2.5 GHz></li>
-                  <li class="list-group-item">
-                    1TB de almacenamiento (reflejado)
-                  </li>
-                  <li class="list-group-item">8 GB de RAM</li>
-                  <li class="list-group-item">10 TB de ancho de banda</li>
-                  <li class="list-group-item">4 direcciones IP</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg mt-2 px-4">
-            <div class="card mx-auto">
-              <div class="card-body text-center">
-                <h1 class="card-title font-weight-bold">Premium</h1>
-                <h4>S/150.00 / mes *</h4>
-                <button
-                  class="btn btn-block mt-4"
-                  :class="{
-                    'btn-danger': alertLogin,
-                    'btn-primary': !alertLogin
-                  }"
-                  :disabled="alertLogin"
-                >
-                  Adquirir
-                </button>
-                <small v-if="alertLogin" class="text-danger"
-                  ><em
-                    ><u
-                      >El boton se activará cuando inicie sesión como cliente
-                      normal *</u
-                    ></em
-                  ></small
-                >
-                <ul class="list-group list-group-flush mt-3">
-                  <li class="list-group-item">4 núcleos a 3.3 GHz></li>
-                  <li class="list-group-item">
-                    1TB de almacenamiento (reflejado)
-                  </li>
-                  <li class="list-group-item">16 GB de RAM</li>
-                  <li class="list-group-item">15 TB de ancho de banda</li>
-                  <li class="list-group-item">5 direcciones IP</li>
-                </ul>
               </div>
             </div>
           </div>
@@ -283,6 +216,77 @@ import sectionCenter from "@/components/SectionCenter.vue";
 export default {
   components: {
     sectionCenter
+  },
+  data() {
+    return {
+      portafolio: Array,
+      fecha_compra: new Date()
+    };
+  },
+  methods: {
+    toast(toaster, append = false, title, message, variant) {
+      this.counter += 1;
+      this.$bvToast.toast(message, {
+        title,
+        toaster,
+        solid: true,
+        variant,
+        appendToast: append
+      });
+    },
+    comprar(sitio) {
+      if (localStorage.getItem("tokenUser")) {
+        const userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
+        let fecha_actual = new Date();
+        fecha_actual =
+          fecha_actual.getFullYear() +
+          "-" +
+          (fecha_actual.getMonth() + 1) +
+          "-" +
+          fecha_actual.getDate();
+        this.fecha_compra = fecha_actual;
+        this.axios({
+          method: "post",
+          url: "/newCompraSitioWeb",
+          data: {
+            dni: userdata.dni,
+            id_sitio: sitio.id,
+            nombre_sitio: sitio.nombre,
+            fecha_compra: this.fecha_compra,
+            precio: sitio.precio
+          },
+          headers: {
+            authorization: localStorage.getItem("tokenUser")
+          }
+        }).then(res => {
+          if (res.data.success) {
+            this.toast(
+              "b-toaster-bottom-right",
+              true,
+              "Felicidades",
+              res.data.message,
+              "success"
+            );
+          }
+        });
+      } else {
+        this.toast(
+          "b-toaster-bottom-right",
+          true,
+          "Hubo un problema",
+          "el administrador y las personas sin cuenta no pueden comprar en este sitio web.",
+          "danger"
+        );
+      }
+    }
+  },
+  created() {
+    this.axios({
+      method: "get",
+      url: "/showPortafolioWeb"
+    }).then(res => {
+      this.portafolio = res.data;
+    });
   },
   computed: {
     mostrarButtonNoLogin() {

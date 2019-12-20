@@ -25,6 +25,7 @@
                 href="#list-home"
                 role="tab"
                 aria-controls="home"
+                @click="getComentarios"
                 ><h5>Comentarios</h5></a
               >
               <a
@@ -34,6 +35,7 @@
                 href="#list-profile"
                 role="tab"
                 aria-controls="profile"
+                @click="getNoticias"
                 ><h5>Noticias</h5></a
               >
               <a
@@ -43,6 +45,7 @@
                 href="#list-settings"
                 role="tab"
                 aria-controls="settings"
+                @click="getTutoriales"
                 ><h5>Tutoriales</h5></a
               >
               <a
@@ -52,6 +55,7 @@
                 href="#list-messages"
                 role="tab"
                 aria-controls="messages"
+                @click="getEventos"
                 ><h5>Eventos</h5></a
               >
             </div>
@@ -89,7 +93,7 @@
                       :key="comentario.id"
                     >
                       <div
-                        class="border rounded border-success mt-2 p-2 animated rubberBand"
+                        class="border rounded border-success mt-2 p-2 animated swing"
                       >
                         <p class="text-primary"><u>Enviado por: </u></p>
                         <h6>{{ comentario.correo }}</h6>
@@ -134,7 +138,7 @@
                   <div class="container-fluid border rounded">
                     <div v-for="noticia in showNoticias" :key="noticia.id">
                       <div
-                        class="border rounded border-success mt-2 p-2 animated rubberBand"
+                        class="border rounded border-success mt-2 p-2 animated swing"
                       >
                         <p class="text-primary"><u>Enviado por: </u></p>
                         <h6>{{ noticia.correo }}</h6>
@@ -155,21 +159,6 @@
               </div>
               <div
                 class="tab-pane fade"
-                id="list-messages"
-                role="tabpanel"
-                aria-labelledby="list-messages-list"
-              >
-                <div class="container-fluid">
-                  <h3>Los Administradores Publicaron estos eventos:</h3>
-                  <div class="container">
-                    <div class="bg-info">
-                      Aquí las Capactiaciones
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="tab-pane fade"
                 id="list-settings"
                 role="tabpanel"
                 aria-labelledby="list-settings-list"
@@ -178,8 +167,12 @@
                   <h5>Puedes compartir un Tutorial:</h5>
                   <form>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5"></textarea>
-                      <button class="btn btn-primary mt-2">
+                      <textarea
+                        class="form-control"
+                        rows="5"
+                        v-model="newTutorial.tutorial"
+                      ></textarea>
+                      <button class="btn btn-primary mt-2" @click="envTutorial">
                         Compartir tutorial
                       </button>
                     </div>
@@ -187,9 +180,57 @@
                 </div>
                 <div class="container-fluid">
                   <h3>Tutoriales:</h3>
-                  <div class="container">
-                    <div class="bg-info">
-                      Aquí el comentario
+                  <div class="container-fluid border rounded">
+                    <div v-for="tutorial in showTutoriales" :key="tutorial.id">
+                      <div
+                        class="border rounded border-success mt-2 p-2 animated swing"
+                      >
+                        <p class="text-primary"><u>Publicado por: </u></p>
+                        <h6>{{ tutorial.correo }}</h6>
+                        <p class="text-primary"><u>Rango :</u></p>
+                        <h6>{{ tutorial.rango }}</h6>
+                        <p class="text-primary"><u>Tutorial :</u></p>
+                        <div class="container border-warning">
+                          <p class="border border-warning rounded p-2">
+                            {{ tutorial.noticia }}
+                          </p>
+                        </div>
+                        <p>Fecha: {{ tutorial.fecha }}</p>
+                      </div>
+                      <hr />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-messages"
+                role="tabpanel"
+                aria-labelledby="list-messages-list"
+              >
+                <div class="container-fluid">
+                  <h3>Los Administradores Publicaron estos eventos:</h3>
+                  <div class="container-fluid border rounded">
+                    <div v-for="evento in showEventos" :key="evento.id">
+                      <div
+                        class="border rounded border-success mt-2 p-2 animated rubberBand"
+                      >
+                        <p class="text-primary"><u>Publicado por: </u></p>
+                        <h6>{{ evento.correo }}</h6>
+                        <p class="text-primary"><u>Rango :</u></p>
+                        <h6>{{ evento.rango }}</h6>
+                        <p class="text-primary"><u>Titulo :</u></p>
+                        <div class="container border-warning">
+                          <p class="border border-warning rounded p-2">
+                            {{ evento.titulo }}
+                          </p>
+                        </div>
+                        <p>Lugar: {{ evento.lugar }}</p>
+                        <p>Fecha: {{ evento.fecha }}</p>
+                        <p>Hora de inicio: {{ evento.hora_inicio }}</p>
+                        <p>Hora de termino: {{ evento.hora_termino }}</p>
+                      </div>
+                      <hr />
                     </div>
                   </div>
                 </div>
@@ -208,6 +249,8 @@ export default {
       headerAuthorization: "",
       showComentarios: Array,
       showNoticias: Array,
+      showTutoriales: Array,
+      showEventos: Array,
       newComentario: {
         dni_emisor: null,
         correo: "",
@@ -220,6 +263,13 @@ export default {
         correo: "",
         rango: "",
         noticia: "",
+        fecha: new Date()
+      },
+      newTutorial: {
+        dni_emisor: null,
+        correo: "",
+        rango: "",
+        tutorial: "",
         fecha: new Date()
       }
     };
@@ -249,6 +299,22 @@ export default {
         url: "/showNoticias"
       }).then(res => {
         this.showNoticias = res.data;
+      });
+    },
+    getTutoriales() {
+      this.axios({
+        method: "get",
+        url: "/showTutoriales"
+      }).then(res => {
+        this.showTutoriales = res.data;
+      });
+    },
+    getEventos() {
+      this.axios({
+        method: "get",
+        url: "/showEventos"
+      }).then(res => {
+        this.showEventos = res.data;
       });
     },
     envComment(env) {
@@ -296,6 +362,30 @@ export default {
           this.getNoticias();
         }
       });
+    },
+    envTutorial(env) {
+      env.preventDefault();
+      console.log(this.newTutorial);
+      this.axios({
+        method: "post",
+        url: "/newTutorial",
+        data: this.newTutorial,
+        headers: {
+          authorization: this.headerAuthorization
+        }
+      }).then(res => {
+        if (res.data.message) {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Felicidades",
+            res.data.message,
+            "success"
+          );
+          this.newTutorial.tutorial = "";
+          this.getTutoriales();
+        }
+      });
     }
   },
   computed: {
@@ -312,6 +402,8 @@ export default {
   created() {
     this.getComentarios();
     this.getNoticias();
+    this.getTutoriales();
+    this.getEventos();
     let newfecha = new Date();
     newfecha =
       newfecha.getFullYear() +
@@ -321,6 +413,7 @@ export default {
       newfecha.getDate();
     this.newComentario.fecha = newfecha;
     this.newNoticia.fecha = newfecha;
+    this.newTutorial.fecha = newfecha;
     if (localStorage.getItem("tokenUser")) {
       this.headerAuthorization = localStorage.getItem("tokenUser");
       const userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
@@ -330,6 +423,9 @@ export default {
       this.newNoticia.dni_emisor = userdata.dni;
       this.newNoticia.correo = userdata.correo;
       this.newNoticia.rango = "Usuario";
+      this.newTutorial.dni_emisor = userdata.dni;
+      this.newTutorial.correo = userdata.correo;
+      this.newTutorial.rango = "Usuario";
     } else if (localStorage.getItem("tokenAdmin")) {
       this.headerAuthorization = localStorage.getItem("tokenAdmin");
       const userdata = JSON.parse(localStorage.getItem("dataUserProfileAdmin"));
@@ -339,6 +435,9 @@ export default {
       this.newNoticia.dni_emisor = userdata.dni;
       this.newNoticia.correo = userdata.correo;
       this.newNoticia.rango = "Administrador";
+      this.newTutorial.dni_emisor = userdata.dni;
+      this.newTutorial.correo = userdata.correo;
+      this.newTutorial.rango = "Administrador";
     } else {
       return false;
     }

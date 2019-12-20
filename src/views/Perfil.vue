@@ -75,7 +75,7 @@
                         <span class="input-group-text">Pais</span>
                       </div>
                       <select class="form-control" v-model="form.pais">
-                        <option value="peru" selected>Perú</option>
+                        <option value="peru">Perú</option>
                         <option value="ecuador">Ecuador</option>
                         <option value="colombia">Colombia</option>
                         <option value="chile">Chile</option>
@@ -141,7 +141,10 @@
                       * Este campo es obligatorio...
                     </small>
                   </div>
-                  <button class="btn btn-warning btn-block ml-auto">
+                  <button
+                    class="btn btn-warning btn-block ml-auto"
+                    @click="actualizar"
+                  >
                     Guardar Cambios
                   </button>
                 </form>
@@ -255,6 +258,60 @@ export default {
       sitiosComprados: Array,
       nositios: false
     };
+  },
+  methods: {
+    toast(toaster, append = false, title, message, variant) {
+      this.counter += 1;
+      this.$bvToast.toast(message, {
+        title,
+        toaster,
+        solid: true,
+        variant,
+        appendToast: append
+      });
+    },
+    actualizar(env) {
+      env.preventDefault();
+      let token = "";
+      let url = "";
+      let userdata = {};
+      if (localStorage.getItem("tokenUser")) {
+        token = localStorage.getItem("tokenUser");
+        url = "/user/profileupdate";
+        userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
+      } else {
+        token = localStorage.getItem("tokenAdmin");
+        url = "/admin/profileupdate";
+        userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
+      }
+      this.axios({
+        method: "put",
+        url: url,
+        data: this.form,
+        headers: {
+          authorization: token,
+          dni: userdata.dni
+        }
+      }).then(res => {
+        if (res.data.update) {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Felicidades",
+            res.data.message,
+            "success"
+          );
+        } else {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Error",
+            "Error al actalizar",
+            "danger"
+          );
+        }
+      });
+    }
   },
   computed: {
     mostrarPerfil() {
