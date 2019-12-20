@@ -258,8 +258,7 @@ export default {
         url: "/newNoticia",
         data: this.newNoticia,
         headers: {
-          authorization: this.headerAuthorization,
-          dni: this.newNoticia.dni_emisor
+          authorization: this.headerAuthorization
         }
       }).then(res => {
         if (res.data.message) {
@@ -282,8 +281,7 @@ export default {
         url: "/newComentario",
         data: this.newNoticia,
         headers: {
-          authorization: this.headerAuthorization,
-          dni: this.newComentario.dni_emisor
+          authorization: this.headerAuthorization
         }
       }).then(res => {
         if (res.data.message) {
