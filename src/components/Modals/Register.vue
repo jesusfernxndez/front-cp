@@ -218,8 +218,9 @@ export default {
             "success"
           );
           localStorage.setItem("tokenUser", res.data.token);
+          localStorage.setItem("dataUserProfile", JSON.stringify(this.form));
           window.$("#ModalCenterRegister").modal("hide");
-          this.$router.push("/perfil");
+          this.$router.go("/");
         }
       });
     }

@@ -112,7 +112,7 @@ export default {
             JSON.stringify(res.data.dataUser)
           );
           window.$("#ModalCenterIngresar").modal("hide");
-          this.$router.push("/perfil");
+          this.$router.go("/");
         } else {
           this.toast(
             "b-toaster-bottom-right",

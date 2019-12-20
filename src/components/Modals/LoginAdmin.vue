@@ -92,7 +92,7 @@ export default {
             JSON.stringify(res.data.dataUser)
           );
           window.$("#ModalCenterIngresarAdmin").modal("hide");
-          this.$router.push("/admin");
+          this.$router.go("/");
         } else {
           this.toast(
             "b-toaster-bottom-right",
