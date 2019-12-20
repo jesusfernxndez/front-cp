@@ -17,7 +17,7 @@ import "@fortawesome/fontawesome-free/js/all.js";
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = "https://coders-peru-api.herokuapp.com/v1";
+axios.defaults.baseURL = "https://coders-peru-api.now.sh/v1";
 
 new Vue({
   router,
