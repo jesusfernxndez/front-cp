@@ -17,7 +17,7 @@ import "@fortawesome/fontawesome-free/js/all.js";
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = "https://localhost:4000/api";
+axios.defaults.baseURL = "http://localhost:4000/api";
 
 new Vue({
   router,

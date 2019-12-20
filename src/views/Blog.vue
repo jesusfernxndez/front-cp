@@ -208,18 +208,18 @@ export default {
       headerAuthorization: "",
       showComentarios: Array,
       showNoticias: Array,
-      newNoticia: {
-        dni_emisor: null,
-        correo: "",
-        rango: "",
-        noticia: "",
-        fecha: new Date()
-      },
       newComentario: {
         dni_emisor: null,
         correo: "",
         rango: "",
         comentario: "",
+        fecha: new Date()
+      },
+      newNoticia: {
+        dni_emisor: null,
+        correo: "",
+        rango: "",
+        noticia: "",
         fecha: new Date()
       }
     };
@@ -235,7 +235,7 @@ export default {
         appendToast: append
       });
     },
-    showComents() {
+    getComentarios() {
       this.axios({
         method: "get", //you can set what request you want to be
         url: "/showComentarios"
@@ -249,6 +249,29 @@ export default {
         url: "/showNoticias"
       }).then(res => {
         this.showNoticias = res.data;
+      });
+    },
+    envComment(env) {
+      env.preventDefault();
+      this.axios({
+        method: "post",
+        url: "/newComentario",
+        data: this.newComentario,
+        headers: {
+          authorization: this.headerAuthorization
+        }
+      }).then(res => {
+        if (res.data.message) {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Felicidades",
+            res.data.message,
+            "success"
+          );
+          this.newComentario.comentario = "";
+          this.getComentarios();
+        }
       });
     },
     envNoticia(env) {
@@ -273,29 +296,6 @@ export default {
           this.getNoticias();
         }
       });
-    },
-    envComment(env) {
-      env.preventDefault();
-      this.axios({
-        method: "post",
-        url: "/newComentario",
-        data: this.newNoticia,
-        headers: {
-          authorization: this.headerAuthorization
-        }
-      }).then(res => {
-        if (res.data.message) {
-          this.toast(
-            "b-toaster-bottom-right",
-            true,
-            "Felicidades",
-            res.data.message,
-            "success"
-          );
-          this.newComentario.comentario = "";
-          this.getNoticias();
-        }
-      });
     }
   },
   computed: {
@@ -310,7 +310,7 @@ export default {
     }
   },
   created() {
-    this.showComents();
+    this.getComentarios();
     this.getNoticias();
     let newfecha = new Date();
     newfecha =
