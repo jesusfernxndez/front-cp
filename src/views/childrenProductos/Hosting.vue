@@ -264,12 +264,12 @@ export default {
         });
       } else {
         this.toast(
-              "b-toaster-bottom-right",
-              true,
-              "Felicidades",
-              "el administrador y las personas sin cuenta no pueden comprar en este sitio web.",
-              "success"
-            );
+          "b-toaster-bottom-right",
+          true,
+          "Felicidades",
+          "el administrador y las personas sin cuenta no pueden comprar en este sitio web.",
+          "success"
+        );
       }
     }
   },

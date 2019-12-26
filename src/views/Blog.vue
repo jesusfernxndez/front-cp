@@ -9,7 +9,8 @@
       />
       <div class="container mt-5">
         <div class="alert alert-danger" role="alert" v-if="!mostrarsolocajaOne">
-          Las Personas sin cuenta no pueden realizar comentarios, publicar noticias ni tutoriales.
+          Las Personas sin cuenta no pueden realizar comentarios, publicar
+          noticias ni tutoriales.
         </div>
         <div class="row">
           <div class="col-lg">
@@ -365,7 +366,6 @@ export default {
     },
     envTutorial(env) {
       env.preventDefault();
-      console.log(this.newTutorial);
       this.axios({
         method: "post",
         url: "/newTutorial",

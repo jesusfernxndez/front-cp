@@ -72,23 +72,43 @@
                   <form>
                     <div class="form-group">
                       <label>Título del evento</label>
-                      <input type="text" class="form-control" v-model="newEvento.titulo">
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newEvento.titulo"
+                      />
                     </div>
                     <div class="form-group">
                       <label>Fecha del evento</label>
-                      <input type="date" class="form-control" v-model="newEvento.fecha">
+                      <input
+                        type="date"
+                        class="form-control"
+                        v-model="newEvento.fecha"
+                      />
                     </div>
                     <div class="form-group">
                       <label>Hora de inicio</label>
-                      <input type="time" class="form-control" v-model="newEvento.hora_inicio">
+                      <input
+                        type="time"
+                        class="form-control"
+                        v-model="newEvento.hora_inicio"
+                      />
                     </div>
                     <div class="form-group">
                       <label>Hora de Término</label>
-                      <input type="time" class="form-control" v-model="newEvento.hora_termino">
+                      <input
+                        type="time"
+                        class="form-control"
+                        v-model="newEvento.hora_termino"
+                      />
                     </div>
                     <div class="form-group">
                       <label>Lugar del Evento</label>
-                      <input type="text" class="form-control" v-model="newEvento.lugar">
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newEvento.lugar"
+                      />
                     </div>
                     <div>
                       <button class="btn btn-primary mt-2" @click="envEvento">
@@ -100,26 +120,26 @@
                 <div class="container-fluid mt-4">
                   <h3>Eventos:</h3>
                   <div v-for="evento in showEventos" :key="evento.id">
-                      <div
-                        class="border rounded border-success mt-2 p-2 animated rubberBand"
-                      >
-                        <p class="text-primary"><u>Publicado por: </u></p>
-                        <h6>{{ evento.correo }}</h6>
-                        <p class="text-primary"><u>Rango :</u></p>
-                        <h6>{{ evento.rango }}</h6>
-                        <p class="text-primary"><u>Titulo :</u></p>
-                        <div class="container border-warning">
-                          <p class="border border-warning rounded p-2">
-                            {{ evento.titulo }}
-                          </p>
-                        </div>
-                        <p>Lugar: {{ evento.lugar }}</p>
-                        <p>Fecha: {{ evento.fecha }}</p>
-                        <p>Hora de inicio: {{ evento.hora_inicio }}</p>
-                        <p>Hora de termino: {{ evento.hora_termino }}</p>
+                    <div
+                      class="border rounded border-success mt-2 p-2 animated rubberBand"
+                    >
+                      <p class="text-primary"><u>Publicado por: </u></p>
+                      <h6>{{ evento.correo }}</h6>
+                      <p class="text-primary"><u>Rango :</u></p>
+                      <h6>{{ evento.rango }}</h6>
+                      <p class="text-primary"><u>Titulo :</u></p>
+                      <div class="container border-warning">
+                        <p class="border border-warning rounded p-2">
+                          {{ evento.titulo }}
+                        </p>
                       </div>
-                      <hr />
+                      <p>Lugar: {{ evento.lugar }}</p>
+                      <p>Fecha: {{ evento.fecha }}</p>
+                      <p>Hora de inicio: {{ evento.hora_inicio }}</p>
+                      <p>Hora de termino: {{ evento.hora_termino }}</p>
                     </div>
+                    <hr />
+                  </div>
                 </div>
               </div>
               <div
@@ -158,7 +178,14 @@
                         <td>{{ usuario.pais }}</td>
                         <td>{{ usuario.puesto_actual }}</td>
                         <td>{{ usuario.empresa }}</td>
-                        <td><button class="btn btn-danger btn-small" @click='EliminarUsuario(usuario.dni)'>Eliminar</button></td>
+                        <td>
+                          <button
+                            class="btn btn-danger btn-small"
+                            @click="EliminarUsuario(usuario.dni)"
+                          >
+                            Eliminar
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -196,7 +223,14 @@
                         <td>{{ planhosting.fecha_compra }}</td>
                         <td>{{ planhosting.fecha_vencimiento }}</td>
                         <td>{{ planhosting.precio }}</td>
-                        <td><button class="btn btn-danger btn-small" @click='EliminarVentaHosting(planhosting.id)'>Eliminar</button></td>
+                        <td>
+                          <button
+                            class="btn btn-danger btn-small"
+                            @click="EliminarVentaHosting(planhosting.id)"
+                          >
+                            Eliminar
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -224,7 +258,7 @@
                     <tbody>
                       <tr
                         v-for="(ventasitio, index) in showVentasSitios"
-                        :key="ventasitio.dni"
+                        :key="ventasitio.id"
                       >
                         <th scope="row">{{ index + 1 }}</th>
                         <td>{{ ventasitio.dni }}</td>
@@ -232,7 +266,14 @@
                         <td>{{ ventasitio.nombre_sitio }}</td>
                         <td>{{ ventasitio.fecha_compra }}</td>
                         <td>{{ ventasitio.precio }}</td>
-                        <td><button class="btn btn-danger btn-small" @click='EliminarVentaSitio(ventasitio.id)'>Eliminar</button></td>
+                        <td>
+                          <button
+                            class="btn btn-danger btn-small"
+                            @click="EliminarVentaSitio(ventasitio.id)"
+                          >
+                            Eliminar
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -282,7 +323,7 @@ export default {
         url: "/showUsuarios"
       }).then(res => {
         this.showUsuarios = res.data;
-      })
+      });
     },
     getEventos() {
       this.axios({
@@ -298,15 +339,15 @@ export default {
         url: "/showVentasHosting"
       }).then(res => {
         this.showVentasHosting = res.data;
-      })
+      });
     },
     getVentasSitios() {
       this.axios({
         method: "get",
         url: "/showVentasSitios"
       }).then(res => {
-        this.showVentasSitios = res.data
-      })
+        this.showVentasSitios = res.data;
+      });
     },
     envEvento(env) {
       env.preventDefault();
@@ -330,7 +371,7 @@ export default {
           this.newEvento.lugar = "";
           this.getEventos();
         }
-      })
+      });
     },
     EliminarUsuario(dni) {
       this.axios({
@@ -355,7 +396,7 @@ export default {
     EliminarVentaHosting(id) {
       this.axios({
         method: "delete",
-        url: `/deleteVentaHosting/${id}`,
+        url: `/deleteVentaHosting/${id}`
       }).then(res => {
         if (res.data.message) {
           this.toast(
@@ -372,7 +413,7 @@ export default {
     EliminarVentaSitio(id) {
       this.axios({
         method: "delete",
-        url: `/deleteVentaSitio/${id}`,
+        url: `/deleteVentaSitio/${id}`
       }).then(res => {
         if (res.data.message) {
           this.toast(
@@ -411,35 +452,11 @@ export default {
       "-" +
       newfecha.getDate();
     this.newEvento.fecha = newfecha;
-    this.newComentario.fecha = newfecha;
-    this.newNoticia.fecha = newfecha;
-    this.newTutorial.fecha = newfecha;
-    if (localStorage.getItem("tokenUser")) {
-      this.headerAuthorization = localStorage.getItem("tokenUser");
-      const userdata = JSON.parse(localStorage.getItem("dataUserProfile"));
-      this.newComentario.dni_emisor = userdata.dni;
-      this.newComentario.correo = userdata.correo;
-      this.newComentario.rango = "Usuario";
-      this.newNoticia.dni_emisor = userdata.dni;
-      this.newNoticia.correo = userdata.correo;
-      this.newNoticia.rango = "Usuario";
-      this.newTutorial.dni_emisor = userdata.dni;
-      this.newTutorial.correo = userdata.correo;
-      this.newTutorial.rango = "Usuario";
-    } else if (localStorage.getItem("tokenAdmin")) {
+    if (localStorage.getItem("tokenAdmin")) {
       this.headerAuthorization = localStorage.getItem("tokenAdmin");
       const userdata = JSON.parse(localStorage.getItem("dataUserProfileAdmin"));
       this.newEvento.dni_admin = userdata.dni;
       this.newEvento.correo = userdata.correo;
-      this.newComentario.dni_emisor = userdata.dni;
-      this.newComentario.correo = userdata.correo;
-      this.newComentario.rango = "Administrador";
-      this.newNoticia.dni_emisor = userdata.dni;
-      this.newNoticia.correo = userdata.correo;
-      this.newNoticia.rango = "Administrador";
-      this.newTutorial.dni_emisor = userdata.dni;
-      this.newTutorial.correo = userdata.correo;
-      this.newTutorial.rango = "Administrador";
     } else {
       return false;
     }

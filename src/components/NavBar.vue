@@ -120,7 +120,7 @@ export default {
     },
     renderNav() {
       const path = this.$route.path;
-      if (path != "/admin") {
+      if (path != "/sd") {
         return true;
       }
       return false;
