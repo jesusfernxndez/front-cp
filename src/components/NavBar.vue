@@ -129,7 +129,7 @@ export default {
   methods: {
     logout() {
       localStorage.clear();
-      this.$router.push("/perfil");
+      this.$router.push("/");
     }
   }
 };

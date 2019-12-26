@@ -8,9 +8,6 @@
         style="width: 20%; border-color: #46A2D0; border-top-width: 2px !important"
       />
       <div class="container mt-5">
-        <div class="alert alert-danger" role="alert" v-if="!mostrarsolocajaOne">
-          Este apartado no está habilitado para Personas sin cuenta.
-        </div>
         <div class="row">
           <div class="col-lg">
             <div
@@ -25,8 +22,8 @@
                 href="#list-home"
                 role="tab"
                 aria-controls="home"
-                @click="getComentarios"
-                ><h5>Comentarios</h5></a
+                @click="getEventos"
+                ><h5>Agregar eventos</h5></a
               >
               <a
                 class="list-group-item list-group-item-action"
@@ -35,8 +32,8 @@
                 href="#list-profile"
                 role="tab"
                 aria-controls="profile"
-                @click="getNoticias"
-                ><h5>Noticias</h5></a
+                @click="getUsuarios"
+                ><h5>Usuarios Registrados</h5></a
               >
               <a
                 class="list-group-item list-group-item-action"
@@ -45,8 +42,8 @@
                 href="#list-settings"
                 role="tab"
                 aria-controls="settings"
-                @click="getTutoriales"
-                ><h5>Tutoriales</h5></a
+                @click="getVentasHosting"
+                ><h5>Ventas de Hosting</h5></a
               >
               <a
                 class="list-group-item list-group-item-action"
@@ -55,8 +52,8 @@
                 href="#list-messages"
                 role="tab"
                 aria-controls="messages"
-                @click="getEventos"
-                ><h5>Eventos</h5></a
+                @click="getVentasSitios"
+                ><h5>Ventas de Sitios Web</h5></a
               >
             </div>
           </div>
@@ -71,147 +68,38 @@
                 aria-labelledby="list-home-list"
               >
                 <div class="container-fluid" v-if="mostrarsolocajaOne">
-                  <h5>Escribe un comentario:</h5>
+                  <h5>Detalles del Evento:</h5>
                   <form>
                     <div class="form-group">
-                      <textarea
-                        class="form-control"
-                        rows="5"
-                        v-model="newComentario.comentario"
-                      ></textarea>
-                      <button class="btn btn-primary mt-2" @click="envComment">
-                        Publicar Comentario
+                      <label>Título del evento</label>
+                      <input type="text" class="form-control" v-model="newEvento.titulo">
+                    </div>
+                    <div class="form-group">
+                      <label>Fecha del evento</label>
+                      <input type="date" class="form-control" v-model="newEvento.fecha">
+                    </div>
+                    <div class="form-group">
+                      <label>Hora de inicio</label>
+                      <input type="time" class="form-control" v-model="newEvento.hora_inicio">
+                    </div>
+                    <div class="form-group">
+                      <label>Hora de Término</label>
+                      <input type="time" class="form-control" v-model="newEvento.hora_termino">
+                    </div>
+                    <div class="form-group">
+                      <label>Lugar del Evento</label>
+                      <input type="text" class="form-control" v-model="newEvento.lugar">
+                    </div>
+                    <div>
+                      <button class="btn btn-primary mt-2" @click="envEvento">
+                        Publicar Evento
                       </button>
                     </div>
                   </form>
                 </div>
-                <div class="container-fluid">
-                  <h3>Comentarios:</h3>
-                  <div class="container-fluid border rounded">
-                    <div
-                      v-for="comentario in showComentarios"
-                      :key="comentario.id"
-                    >
-                      <div
-                        class="border rounded border-success mt-2 p-2 animated swing"
-                      >
-                        <p class="text-primary"><u>Enviado por: </u></p>
-                        <h6>{{ comentario.correo }}</h6>
-                        <p class="text-primary"><u>Rango :</u></p>
-                        <h6>{{ comentario.rango }}</h6>
-                        <p class="text-primary"><u>Comentario :</u></p>
-                        <div class="container border-warning">
-                          <p class="border border-warning rounded p-2">
-                            {{ comentario.comentario }}
-                          </p>
-                        </div>
-                        <p>Fecha: {{ comentario.fecha }}</p>
-                      </div>
-                      <hr />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="list-profile"
-                role="tabpanel"
-                aria-labelledby="list-profile-list"
-              >
-                <div class="container-fluid" v-if="mostrarsolocajaOne">
-                  <h5>Puedes compartir una noticia:</h5>
-                  <form>
-                    <div class="form-group">
-                      <textarea
-                        class="form-control"
-                        rows="5"
-                        v-model="newNoticia.noticia"
-                      ></textarea>
-                      <button class="btn btn-primary mt-2" @click="envNoticia">
-                        Compartir Noticia
-                      </button>
-                    </div>
-                  </form>
-                </div>
-                <div class="container-fluid">
-                  <h3>Noticias:</h3>
-                  <div class="container-fluid border rounded">
-                    <div v-for="noticia in showNoticias" :key="noticia.id">
-                      <div
-                        class="border rounded border-success mt-2 p-2 animated swing"
-                      >
-                        <p class="text-primary"><u>Enviado por: </u></p>
-                        <h6>{{ noticia.correo }}</h6>
-                        <p class="text-primary"><u>Rango :</u></p>
-                        <h6>{{ noticia.rango }}</h6>
-                        <p class="text-primary"><u>Noticia :</u></p>
-                        <div class="container border-warning">
-                          <p class="border border-warning rounded p-2">
-                            {{ noticia.noticia }}
-                          </p>
-                        </div>
-                        <p>Fecha: {{ noticia.fecha }}</p>
-                      </div>
-                      <hr />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="list-settings"
-                role="tabpanel"
-                aria-labelledby="list-settings-list"
-              >
-                <div class="container-fluid" v-if="mostrarsolocajaOne">
-                  <h5>Puedes compartir un Tutorial:</h5>
-                  <form>
-                    <div class="form-group">
-                      <textarea
-                        class="form-control"
-                        rows="5"
-                        v-model="newTutorial.tutorial"
-                      ></textarea>
-                      <button class="btn btn-primary mt-2" @click="envTutorial">
-                        Compartir tutorial
-                      </button>
-                    </div>
-                  </form>
-                </div>
-                <div class="container-fluid">
-                  <h3>Tutoriales:</h3>
-                  <div class="container-fluid border rounded">
-                    <div v-for="tutorial in showTutoriales" :key="tutorial.id">
-                      <div
-                        class="border rounded border-success mt-2 p-2 animated swing"
-                      >
-                        <p class="text-primary"><u>Publicado por: </u></p>
-                        <h6>{{ tutorial.correo }}</h6>
-                        <p class="text-primary"><u>Rango :</u></p>
-                        <h6>{{ tutorial.rango }}</h6>
-                        <p class="text-primary"><u>Tutorial :</u></p>
-                        <div class="container border-warning">
-                          <p class="border border-warning rounded p-2">
-                            {{ tutorial.noticia }}
-                          </p>
-                        </div>
-                        <p>Fecha: {{ tutorial.fecha }}</p>
-                      </div>
-                      <hr />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="list-messages"
-                role="tabpanel"
-                aria-labelledby="list-messages-list"
-              >
-                <div class="container-fluid">
-                  <h3>Los Administradores Publicaron estos eventos:</h3>
-                  <div class="container-fluid border rounded">
-                    <div v-for="evento in showEventos" :key="evento.id">
+                <div class="container-fluid mt-4">
+                  <h3>Eventos:</h3>
+                  <div v-for="evento in showEventos" :key="evento.id">
                       <div
                         class="border rounded border-success mt-2 p-2 animated rubberBand"
                       >
@@ -232,7 +120,122 @@
                       </div>
                       <hr />
                     </div>
-                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-profile"
+                role="tabpanel"
+                aria-labelledby="list-profile-list"
+              >
+                <div class="container-fluid mt-5" style="overflow:auto">
+                  <table class="table table-bordered">
+                    <thead class="thead-info">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">dni</th>
+                        <th scope="col">Nombres y Apellidos</th>
+                        <th scope="col">Correo Electrónico</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Pais</th>
+                        <th scope="col">Puesto Actual</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(usuario, index) in showUsuarios"
+                        :key="usuario.dni"
+                      >
+                        <th scope="row">{{ index + 1 }}</th>
+                        <td>{{ usuario.dni }}</td>
+                        <td>{{ usuario.fullname }}</td>
+                        <td>{{ usuario.correo }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.password }}</td>
+                        <td>{{ usuario.pais }}</td>
+                        <td>{{ usuario.puesto_actual }}</td>
+                        <td>{{ usuario.empresa }}</td>
+                        <td><button class="btn btn-danger btn-small" @click='EliminarUsuario(usuario.dni)'>Eliminar</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-settings"
+                role="tabpanel"
+                aria-labelledby="list-settings-list"
+              >
+                <div class="container-fluid mt-5" style="overflow:auto">
+                  <table class="table table-bordered">
+                    <thead class="thead-info">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">dni</th>
+                        <th scope="col">id_plan</th>
+                        <th scope="col">nombre_plan</th>
+                        <th scope="col">fecha_compra</th>
+                        <th scope="col">fecha_vencimiento</th>
+                        <th scope="col">precio</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(planhosting, index) in showVentasHosting"
+                        :key="planhosting.id"
+                      >
+                        <th scope="row">{{ index + 1 }}</th>
+                        <td>{{ planhosting.dni }}</td>
+                        <td>{{ planhosting.id_plan }}</td>
+                        <td>{{ planhosting.nombre_plan }}</td>
+                        <td>{{ planhosting.fecha_compra }}</td>
+                        <td>{{ planhosting.fecha_vencimiento }}</td>
+                        <td>{{ planhosting.precio }}</td>
+                        <td><button class="btn btn-danger btn-small" @click='EliminarVentaHosting(planhosting.id)'>Eliminar</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-messages"
+                role="tabpanel"
+                aria-labelledby="list-messages-list"
+              >
+                <div class="container-fluid mt-5" style="overflow:auto">
+                  <table class="table table-bordered">
+                    <thead class="thead-info">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">dni</th>
+                        <th scope="col">id_sitio</th>
+                        <th scope="col">nombre_sitio</th>
+                        <th scope="col">Fecha_compra</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(ventasitio, index) in showVentasSitios"
+                        :key="ventasitio.dni"
+                      >
+                        <th scope="row">{{ index + 1 }}</th>
+                        <td>{{ ventasitio.dni }}</td>
+                        <td>{{ ventasitio.id_sitio }}</td>
+                        <td>{{ ventasitio.nombre_sitio }}</td>
+                        <td>{{ ventasitio.fecha_compra }}</td>
+                        <td>{{ ventasitio.precio }}</td>
+                        <td><button class="btn btn-danger btn-small" @click='EliminarVentaSitio(ventasitio.id)'>Eliminar</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -247,30 +250,18 @@ export default {
   data() {
     return {
       headerAuthorization: "",
-      showComentarios: Array,
-      showNoticias: Array,
-      showTutoriales: Array,
       showEventos: Array,
-      newComentario: {
-        dni_emisor: null,
+      showUsuarios: Array,
+      showVentasHosting: Array,
+      showVentasSitios: Array,
+      newEvento: {
+        dni_admin: null,
+        titulo: "",
         correo: "",
-        rango: "",
-        comentario: "",
-        fecha: new Date()
-      },
-      newNoticia: {
-        dni_emisor: null,
-        correo: "",
-        rango: "",
-        noticia: "",
-        fecha: new Date()
-      },
-      newTutorial: {
-        dni_emisor: null,
-        correo: "",
-        rango: "",
-        tutorial: "",
-        fecha: new Date()
+        fecha: "",
+        hora_inicio: new Date(),
+        hora_termino: new Date(),
+        lugar: ""
       }
     };
   },
@@ -285,29 +276,13 @@ export default {
         appendToast: append
       });
     },
-    getComentarios() {
-      this.axios({
-        method: "get", //you can set what request you want to be
-        url: "/showComentarios"
-      }).then(res => {
-        this.showComentarios = res.data;
-      });
-    },
-    getNoticias() {
-      this.axios({
-        method: "get", //you can set what request you want to be
-        url: "/showNoticias"
-      }).then(res => {
-        this.showNoticias = res.data;
-      });
-    },
-    getTutoriales() {
+    getUsuarios() {
       this.axios({
         method: "get",
-        url: "/showTutoriales"
+        url: "/showUsuarios"
       }).then(res => {
-        this.showTutoriales = res.data;
-      });
+        this.showUsuarios = res.data;
+      })
     },
     getEventos() {
       this.axios({
@@ -317,12 +292,28 @@ export default {
         this.showEventos = res.data;
       });
     },
-    envComment(env) {
+    getVentasHosting() {
+      this.axios({
+        method: "get",
+        url: "/showVentasHosting"
+      }).then(res => {
+        this.showVentasHosting = res.data;
+      })
+    },
+    getVentasSitios() {
+      this.axios({
+        method: "get",
+        url: "/showVentasSitios"
+      }).then(res => {
+        this.showVentasSitios = res.data
+      })
+    },
+    envEvento(env) {
       env.preventDefault();
       this.axios({
         method: "post",
-        url: "/newComentario",
-        data: this.newComentario,
+        url: "/newEvento",
+        data: this.newEvento,
         headers: {
           authorization: this.headerAuthorization
         }
@@ -335,20 +326,36 @@ export default {
             res.data.message,
             "success"
           );
-          this.newComentario.comentario = "";
-          this.getComentarios();
+          this.newEvento.titulo = "";
+          this.newEvento.lugar = "";
+          this.getEventos();
+        }
+      })
+    },
+    EliminarUsuario(dni) {
+      this.axios({
+        method: "delete",
+        url: `/deleteUsuario/${dni}`,
+        headers: {
+          authorization: this.headerAuthorization
+        }
+      }).then(res => {
+        if (res.data.message) {
+          this.toast(
+            "b-toaster-bottom-right",
+            true,
+            "Felicidades",
+            res.data.message,
+            "success"
+          );
+          this.getUsuarios();
         }
       });
     },
-    envNoticia(env) {
-      env.preventDefault();
+    EliminarVentaHosting(id) {
       this.axios({
-        method: "post",
-        url: "/newNoticia",
-        data: this.newNoticia,
-        headers: {
-          authorization: this.headerAuthorization
-        }
+        method: "delete",
+        url: `/deleteVentaHosting/${id}`,
       }).then(res => {
         if (res.data.message) {
           this.toast(
@@ -358,21 +365,14 @@ export default {
             res.data.message,
             "success"
           );
-          this.newNoticia.noticia = "";
-          this.getNoticias();
+          this.getVentasHosting();
         }
       });
     },
-    envTutorial(env) {
-      env.preventDefault();
-      console.log(this.newTutorial);
+    EliminarVentaSitio(id) {
       this.axios({
-        method: "post",
-        url: "/newTutorial",
-        data: this.newTutorial,
-        headers: {
-          authorization: this.headerAuthorization
-        }
+        method: "delete",
+        url: `/deleteVentaSitio/${id}`,
       }).then(res => {
         if (res.data.message) {
           this.toast(
@@ -382,8 +382,7 @@ export default {
             res.data.message,
             "success"
           );
-          this.newTutorial.tutorial = "";
-          this.getTutoriales();
+          this.getVentasSitios();
         }
       });
     }
@@ -400,10 +399,10 @@ export default {
     }
   },
   created() {
-    this.getComentarios();
-    this.getNoticias();
-    this.getTutoriales();
     this.getEventos();
+    this.getUsuarios();
+    this.getVentasHosting();
+    this.getVentasSitios();
     let newfecha = new Date();
     newfecha =
       newfecha.getFullYear() +
@@ -411,6 +410,7 @@ export default {
       (newfecha.getMonth() + 1) +
       "-" +
       newfecha.getDate();
+    this.newEvento.fecha = newfecha;
     this.newComentario.fecha = newfecha;
     this.newNoticia.fecha = newfecha;
     this.newTutorial.fecha = newfecha;
@@ -429,6 +429,8 @@ export default {
     } else if (localStorage.getItem("tokenAdmin")) {
       this.headerAuthorization = localStorage.getItem("tokenAdmin");
       const userdata = JSON.parse(localStorage.getItem("dataUserProfileAdmin"));
+      this.newEvento.dni_admin = userdata.dni;
+      this.newEvento.correo = userdata.correo;
       this.newComentario.dni_emisor = userdata.dni;
       this.newComentario.correo = userdata.correo;
       this.newComentario.rango = "Administrador";

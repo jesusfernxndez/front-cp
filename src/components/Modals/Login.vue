@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">
-            INGRESE SUS DATOS
+            Ingrese sus datos
           </h5>
           <button
             type="button"
